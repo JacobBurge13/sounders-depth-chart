@@ -27,11 +27,11 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install shinylive==0.5.1 shiny==0.10.2
+          pip install shinylive==0.5.1
 
       - name: Build Shinylive app
         run: |
-          shinylive export . _site --full-shinylive
+          shinylive export . _site
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
