@@ -1,0 +1,12 @@
+{
+    "https://api.shinyapps.io": {
+        "server_url": "https://api.shinyapps.io",
+        "filename": "/Users/jacobburgess/Desktop/sounders_depth_chart",
+        "app_url": "https://jakeaburgess.shinyapps.io/sounders-depth-chart/",
+        "app_id": "16453148",
+        "app_guid": null,
+        "title": "sounders-depth-chart",
+        "app_mode": "python-shiny",
+        "app_store_version": 1
+    }
+}
