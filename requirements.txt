@@ -1,2 +1,1 @@
-# Shinylive includes shiny, numpy, pandas, matplotlib, scipy by default
-# Only add packages not included in Pyodide here
+shiny==0.10.2
