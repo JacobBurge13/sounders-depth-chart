@@ -27,7 +27,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install shinylive==0.5.2 shiny==0.10.2
+          pip install shinylive==0.5.1 shiny==0.10.2
 
       - name: Build Shinylive app
         run: |
