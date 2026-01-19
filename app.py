@@ -1062,6 +1062,7 @@ app_ui = ui.page_fluid(
             }}
             .action-map-buttons .shiny-input-radiogroup {{
                 row-gap: 12px;
+                margin-top: 10px;
             }}
             .shiny-input-container {{
                 margin-bottom: 0;
@@ -2136,6 +2137,15 @@ def server(input, output, session):
                 return f"{val:.2f}" if isinstance(val, float) else str(val)
             return str(raw_value) if raw_value is not None else "0"
 
+        # Stats not available at event level (only season totals)
+        event_level_unavailable = ['xg_assisted', 'pv_passing', 'pv_carrying', 'pv_receiving', 'pv_defending', 'pv_shooting']
+
+        def get_stat_value(key, default=0):
+            """Get stat value, returning 'N/A' for unavailable per-game stats."""
+            if game_filter and key in event_level_unavailable:
+                return "N/A"
+            return player.get(key, default) or default
+
         # Determine which stats to show based on heatmap selection
         if heatmap_type == "Pass":
             # Passing stats - all clickable to filter heat map
@@ -2149,10 +2159,10 @@ def server(input, output, session):
                 ("Pass %", f"{pass_pct}%", None),
                 ("Prog Passes", player.get("progressive_passes", 0), "progressive_passes"),
                 ("Key Passes", player.get("key_passes", 0), "key_passes"),
-                ("xG Assisted", player.get('xg_assisted', 0) or 0, "xg_assisted"),
+                ("xG Assisted", get_stat_value('xg_assisted'), "xg_assisted"),
                 ("Final 3rd", player.get("final_third_passes", 0), "final_third_passes"),
                 ("Deep Passes", player.get("deep_passes", 0), "deep_passes"),
-                ("PV+ Passing", player.get('pv_passing', 0) or 0, "pv_passing"),
+                ("PV+ Passing", get_stat_value('pv_passing'), "pv_passing"),
             ]
         elif heatmap_type == "Carry":
             # Carrying stats - all clickable to filter heat map
@@ -2162,7 +2172,7 @@ def server(input, output, session):
                 ("Final 3rd", player.get("final_third_carries", 0), "final_third_carries"),
                 ("Deep Carries", player.get("deep_carries", 0), "deep_carries"),
                 ("Prog Carries", player.get("progressive_carries", 0), "progressive_carries"),
-                ("PV+ Carrying", player.get('pv_carrying', 0) or 0, "pv_carrying"),
+                ("PV+ Carrying", get_stat_value('pv_carrying'), "pv_carrying"),
             ]
         elif heatmap_type == "Reception":
             # Reception stats - all clickable to filter heat map
@@ -2171,7 +2181,7 @@ def server(input, output, session):
                 ("Receptions", player.get("receptions", 0), "receptions"),
                 ("Final 3rd Recv", player.get("final_third_receptions", 0), "final_third_receptions"),
                 ("Deep Recv", player.get("deep_receptions", 0), "deep_receptions"),
-                ("PV Receiving", player.get('pv_receiving', 0) or 0, "pv_receiving"),
+                ("PV Receiving", get_stat_value('pv_receiving'), "pv_receiving"),
             ]
         elif heatmap_type == "Shot":
             # Shooting stats - all clickable to filter heat map
@@ -2190,7 +2200,7 @@ def server(input, output, session):
                 ("Goals", goals, "goals"),
                 ("xG", xg, "total_xg"),
                 ("Conversion", f"{conversion}%", None),
-                ("PV Shooting", player.get('pv_shooting', 0) or 0, "pv_shooting"),
+                ("PV Shooting", get_stat_value('pv_shooting'), "pv_shooting"),
             ]
         elif heatmap_type == "Defensive":
             # Defensive stats - all clickable to filter heat map
@@ -2201,7 +2211,7 @@ def server(input, output, session):
                 ("Interceptions", player.get("interceptions", 0), "interceptions"),
                 ("Clearances", player.get("clearances", 0), "clearances"),
                 ("Recoveries", player.get("ball_recoveries", 0), "ball_recoveries"),
-                ("PV Defending", player.get('pv_defending', 0) or 0, "pv_defending"),
+                ("PV Defending", get_stat_value('pv_defending'), "pv_defending"),
             ]
         else:
             # Overall Stats (default) - Mins, Games Played, Games Started, Goals, Assists, Total Actions
