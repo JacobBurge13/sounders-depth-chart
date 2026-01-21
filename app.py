@@ -124,6 +124,117 @@ DEPTH_CHART = {
 # Position order for 4-2-3-1 (First Team)
 POSITION_ORDER = ["GK", "RB", "CB", "CB2", "LB", "CDM", "CDM2", "RAM", "CAM", "LAM", "ST"]
 
+# ============================================================
+# 2024 DEPTH CHART
+# ============================================================
+
+DEPTH_CHART_2024 = {
+    "GK": [
+        {"name": "Stefan Frei", "designation": "SEN", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/ohm7sxqzwo5lzzjfwza9.png", "international": False, "supplemental": False, "off_roster": False, "unavailable": False, "on_loan": False},
+        {"name": "Andrew Thomas", "designation": "SEN", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/v7ywfzz0yxjx5xfnqyhs.png", "international": False, "supplemental": False, "off_roster": False, "unavailable": False, "on_loan": False},
+    ],
+    "RB": [
+        {"name": "Alex Roldan", "designation": "TAM", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/nqxcyv4xbn6dmzocubu6.png", "international": False, "supplemental": False, "off_roster": False, "unavailable": False, "on_loan": False},
+        {"name": "Cody Baker", "designation": "HG", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/player-placeholder.png", "international": False, "supplemental": True, "off_roster": False, "unavailable": False, "on_loan": False},
+    ],
+    "CB": [
+        {"name": "Yeimar Gómez", "designation": "TAM", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/nv1n00o9nqj3b8xp3d7x.png", "international": False, "supplemental": False, "off_roster": False, "unavailable": False, "on_loan": False},
+        {"name": "Xavier Arreaga", "designation": "TAM", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/player-placeholder.png", "international": True, "supplemental": False, "off_roster": False, "unavailable": False, "on_loan": False},
+    ],
+    "CB2": [
+        {"name": "Jackson Ragen", "designation": "SEN", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/lzqqe2bqomxhz3khsjdx.png", "international": False, "supplemental": False, "off_roster": False, "unavailable": False, "on_loan": False},
+        {"name": "Jon Bell", "designation": "SEN", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/aeqgzncldvjzgtxlm8xz.png", "international": False, "supplemental": False, "off_roster": False, "unavailable": False, "on_loan": False},
+    ],
+    "LB": [
+        {"name": "Nouhou Tolo", "designation": "SEN", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/jyjpg9vb3kzmixbcryjq.png", "international": False, "supplemental": False, "off_roster": False, "unavailable": False, "on_loan": False},
+        {"name": "Reed Baker-Whiting", "designation": "HG", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/qvdqsyv9bv2gu3hjvnjq.png", "international": False, "supplemental": True, "off_roster": False, "unavailable": False, "on_loan": False},
+    ],
+    "CDM": [
+        {"name": "Obed Vargas", "designation": "HG", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/taa9y0fcr9qr0kmjkfob.png", "international": False, "supplemental": True, "off_roster": False, "unavailable": False, "on_loan": False},
+        {"name": "Josh Atencio", "designation": "HG", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/player-placeholder.png", "international": False, "supplemental": True, "off_roster": False, "unavailable": False, "on_loan": False},
+    ],
+    "CDM2": [
+        {"name": "Cristian Roldan", "designation": "TAM", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/m5qdkkjckwl4nmkdznmr.png", "international": False, "supplemental": False, "off_roster": False, "unavailable": False, "on_loan": False},
+        {"name": "João Paulo", "designation": "DP", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/jxmb4clwkxqxyxjlwpkk.png", "international": False, "supplemental": False, "off_roster": False, "unavailable": False, "on_loan": False},
+    ],
+    "RAM": [
+        {"name": "Paul Rothrock", "designation": "HG", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/ckwworz7vczyepsrl6ow.png", "international": False, "supplemental": True, "off_roster": False, "unavailable": False, "on_loan": False},
+        {"name": "Léo Chú", "designation": "TAM", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/player-placeholder.png", "international": True, "supplemental": False, "off_roster": False, "unavailable": False, "on_loan": False},
+    ],
+    "CAM": [
+        {"name": "Albert Rusnák", "designation": "DP", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/dvkfxhjyurvbh3xbfwqe.png", "international": False, "supplemental": False, "off_roster": False, "unavailable": False, "on_loan": False},
+        {"name": "Danny Leyva", "designation": "HG", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/i8llg4w0fqrshzqz0zhk.png", "international": False, "supplemental": False, "off_roster": False, "unavailable": False, "on_loan": False},
+    ],
+    "LAM": [
+        {"name": "Jordan Morris", "designation": "DP", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/gdhhtbzmgmxrgq1nqjql.png", "international": False, "supplemental": False, "off_roster": False, "unavailable": False, "on_loan": False},
+        {"name": "Pedro de la Vega", "designation": "U22", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/xwfkzwzxpq8jxdhqhjqq.png", "international": True, "supplemental": False, "off_roster": False, "unavailable": False, "on_loan": False},
+    ],
+    "ST": [
+        {"name": "Raúl Ruidíaz", "designation": "DP", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/player-placeholder.png", "international": False, "supplemental": False, "off_roster": False, "unavailable": False, "on_loan": False},
+        {"name": "Danny Musovski", "designation": "SEN", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/qfhqr8jq1ycqz5xyhzqj.png", "international": False, "supplemental": False, "off_roster": False, "unavailable": False, "on_loan": False},
+    ],
+}
+
+# ============================================================
+# 2026 DEPTH CHART (Pre-season - copy of 2025, update as needed)
+# ============================================================
+
+DEPTH_CHART_2026 = {
+    "GK": [
+        {"name": "Stefan Frei", "designation": "SEN", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/ohm7sxqzwo5lzzjfwza9.png", "international": False, "supplemental": False, "off_roster": False, "unavailable": False, "on_loan": False},
+        {"name": "Andrew Thomas", "designation": "SEN", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/v7ywfzz0yxjx5xfnqyhs.png", "international": False, "supplemental": False, "off_roster": False, "unavailable": False, "on_loan": False},
+        {"name": "Max Anchor", "designation": "SUP", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/rmulbafjb4z9mgd9atd4.png", "international": False, "supplemental": True, "off_roster": False, "unavailable": False, "on_loan": False},
+    ],
+    "RB": [
+        {"name": "Alex Roldan", "designation": "TAM", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/nqxcyv4xbn6dmzocubu6.png", "international": False, "supplemental": False, "off_roster": False, "unavailable": False, "on_loan": False},
+        {"name": "Kalani Kossa-Rienzi", "designation": "SUP", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/player-placeholder.png", "international": False, "supplemental": True, "off_roster": False, "unavailable": False, "on_loan": False},
+        {"name": "Cody Baker", "designation": "HG", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/player-placeholder.png", "international": False, "supplemental": True, "off_roster": False, "unavailable": True, "on_loan": True},
+    ],
+    "CB": [
+        {"name": "Yeimar Gómez", "designation": "TAM", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/nv1n00o9nqj3b8xp3d7x.png", "international": True, "supplemental": False, "off_roster": False, "unavailable": False, "on_loan": False},
+        {"name": "Kim Kee-Hee", "designation": "SEN", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/uh4ypwn6ffjzzmkqjgaz.png", "international": True, "supplemental": False, "off_roster": False, "unavailable": False, "on_loan": False},
+        {"name": "Reign Sailor", "designation": "HG", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/player-placeholder.png", "international": False, "supplemental": True, "off_roster": False, "unavailable": False, "on_loan": False},
+        {"name": "Leo Burney", "designation": "HG", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/player-placeholder.png", "international": False, "supplemental": True, "off_roster": True, "unavailable": True, "on_loan": True},
+    ],
+    "CB2": [
+        {"name": "Jackson Ragen", "designation": "SEN", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/lzqqe2bqomxhz3khsjdx.png", "international": False, "supplemental": False, "off_roster": False, "unavailable": False, "on_loan": False},
+        {"name": "Stuart Hawkins", "designation": "HG", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/player-placeholder.png", "international": False, "supplemental": True, "off_roster": False, "unavailable": False, "on_loan": False},
+    ],
+    "LB": [
+        {"name": "Nouhou Tolo", "designation": "SEN", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/jyjpg9vb3kzmixbcryjq.png", "international": False, "supplemental": False, "off_roster": False, "unavailable": False, "on_loan": False},
+        {"name": "Tomas Sousa", "designation": "SEN", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/player-placeholder.png", "international": False, "supplemental": True, "off_roster": False, "unavailable": True, "on_loan": True},
+        {"name": "Paul Arriola", "designation": "SEI", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/player-placeholder.png", "international": False, "supplemental": False, "off_roster": False, "unavailable": False, "on_loan": False},
+    ],
+    "CDM": [
+        {"name": "Obed Vargas", "designation": "HG", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/taa9y0fcr9qr0kmjkfob.png", "international": False, "supplemental": True, "off_roster": False, "unavailable": False, "on_loan": False},
+        {"name": "Reed Baker-Whiting", "designation": "U22", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/qvdqsyv9bv2gu3hjvnjq.png", "international": False, "supplemental": False, "off_roster": False, "unavailable": False, "on_loan": False},
+        {"name": "Hassani Dotson", "designation": "SEN", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/q3nzwkhmokteuiklvica.png", "international": False, "supplemental": False, "off_roster": False, "unavailable": False, "on_loan": False},
+        {"name": "Snyder Brunell", "designation": "HG", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/player-placeholder.png", "international": False, "supplemental": True, "off_roster": False, "unavailable": False, "on_loan": False},
+    ],
+    "CDM2": [
+        {"name": "Cristian Roldan", "designation": "TAM", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/m5qdkkjckwl4nmkdznmr.png", "international": False, "supplemental": False, "off_roster": False, "unavailable": False, "on_loan": False},
+        {"name": "João Paulo", "designation": "SEN", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/jxmb4clwkxqxyxjlwpkk.png", "international": False, "supplemental": False, "off_roster": False, "unavailable": False, "on_loan": False},
+        {"name": "Nikola Petković", "designation": "U22", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/ensdixiamdvg2wcxtllo.png", "international": True, "supplemental": False, "off_roster": False, "unavailable": False, "on_loan": False},
+    ],
+    "RAM": [
+        {"name": "Jesús Ferreira", "designation": "TAM", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/obqzpexcfgf35uvzv2nr.png", "international": False, "supplemental": False, "off_roster": False, "unavailable": False, "on_loan": False},
+        {"name": "Georgi Minoungou", "designation": "SEN", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/player-placeholder.png", "international": True, "supplemental": True, "off_roster": False, "unavailable": False, "on_loan": False},
+    ],
+    "CAM": [
+        {"name": "Albert Rusnák", "designation": "DP", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/dvkfxhjyurvbh3xbfwqe.png", "international": False, "supplemental": False, "off_roster": False, "unavailable": False, "on_loan": False},
+    ],
+    "LAM": [
+        {"name": "Pedro de la Vega", "designation": "DP", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/xwfkzwzxpq8jxdhqhjqq.png", "international": True, "supplemental": False, "off_roster": False, "unavailable": False, "on_loan": False},
+    ],
+    "ST": [
+        {"name": "Jordan Morris", "designation": "DP", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/gdhhtbzmgmxrgq1nqjql.png", "international": False, "supplemental": False, "off_roster": False, "unavailable": False, "on_loan": False},
+        {"name": "Danny Musovski", "designation": "SEN", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/qfhqr8jq1ycqz5xyhzqj.png", "international": False, "supplemental": False, "off_roster": False, "unavailable": False, "on_loan": False},
+        {"name": "Paul Rothrock", "designation": "SUP", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/ckwworz7vczyepsrl6ow.png", "international": False, "supplemental": True, "off_roster": False, "unavailable": False, "on_loan": False},
+        {"name": "Yu Tsukanome", "designation": "SEN", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/gbe8h3pnbekkdewvsasp.png", "international": True, "supplemental": False, "off_roster": False, "unavailable": False, "on_loan": False},
+        {"name": "Osaze De Rosario", "designation": "SUP", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/rqjv5p4mzchm8x9qhkqz.png", "international": False, "supplemental": True, "off_roster": False, "unavailable": False, "on_loan": False},
+    ],
+}
+
 # Position coordinates on 120x80 pitch (x=width 0-80, y=length 0-120)
 # Vertical pitch: y=0 is defending goal, y=120 is attacking goal
 POSITION_COORDS = {
@@ -213,16 +324,143 @@ DEFIANCE_POSITION_COORDS = {
 }
 
 # ============================================================
+# DEFIANCE 2024 DEPTH CHART (copy of current for historical)
+# ============================================================
+
+DEFIANCE_DEPTH_CHART_2024 = {
+    "GK": [
+        {"name": "M.Shour", "designation": "DEF", "academy": True},
+    ],
+    "LCB": [
+        {"name": "A.Lopez", "designation": "DEF", "academy": True},
+    ],
+    "CB": [
+        {"name": "Kaito", "designation": "DEF", "loanee": True},
+        {"name": "Alvarez", "designation": "DEF"},
+    ],
+    "RCB": [
+        {"name": "Katsaros", "designation": "DEF", "academy": True},
+    ],
+    "LM": [
+        {"name": "Diaw", "designation": "DEF"},
+    ],
+    "LCM": [
+        {"name": "Dodzi", "designation": "DEF"},
+        {"name": "Robles", "designation": "DEF", "academy": True},
+    ],
+    "RCM": [
+        {"name": "Kingston", "designation": "DEF"},
+        {"name": "Baer", "designation": "DEF"},
+    ],
+    "RM": [
+        {"name": "Kang", "designation": "DEF"},
+        {"name": "Gaffney", "designation": "DEF", "academy": True},
+    ],
+    "LW": [
+        {"name": "Gomez", "designation": "DEF", "academy": True},
+        {"name": "Khoury", "designation": "DEF"},
+    ],
+    "ST": [
+        {"name": "Tsukanome", "designation": "DEF"},
+    ],
+    "RW": [
+        {"name": "Pedder", "designation": "DEF"},
+        {"name": "Hassan", "designation": "DEF", "academy": True},
+    ],
+}
+
+# ============================================================
+# DEFIANCE 2026 DEPTH CHART (pre-season placeholder)
+# ============================================================
+
+DEFIANCE_DEPTH_CHART_2026 = {
+    "GK": [
+        {"name": "M.Shour", "designation": "DEF", "academy": True},
+    ],
+    "LCB": [
+        {"name": "A.Lopez", "designation": "DEF", "academy": True},
+    ],
+    "CB": [
+        {"name": "Kaito", "designation": "DEF", "loanee": True},
+        {"name": "Alvarez", "designation": "DEF"},
+    ],
+    "RCB": [
+        {"name": "Katsaros", "designation": "DEF", "academy": True},
+    ],
+    "LM": [
+        {"name": "Diaw", "designation": "DEF"},
+    ],
+    "LCM": [
+        {"name": "Dodzi", "designation": "DEF"},
+        {"name": "Robles", "designation": "DEF", "academy": True},
+    ],
+    "RCM": [
+        {"name": "Kingston", "designation": "DEF"},
+        {"name": "Baer", "designation": "DEF"},
+    ],
+    "RM": [
+        {"name": "Kang", "designation": "DEF"},
+        {"name": "Gaffney", "designation": "DEF", "academy": True},
+    ],
+    "LW": [
+        {"name": "Gomez", "designation": "DEF", "academy": True},
+        {"name": "Khoury", "designation": "DEF"},
+    ],
+    "ST": [
+        {"name": "Tsukanome", "designation": "DEF"},
+    ],
+    "RW": [
+        {"name": "Pedder", "designation": "DEF"},
+        {"name": "Hassan", "designation": "DEF", "academy": True},
+    ],
+}
+
+# ============================================================
 # LOAD DATA
 # ============================================================
 
 DATA_DIR = Path(__file__).parent / "data"
 
-with open(DATA_DIR / "players.json") as f:
-    PLAYERS_DATA = json.load(f)
+CURRENT_SEASON = 2025  # Update this when a new season starts
 
-with open(DATA_DIR / "events.json") as f:
-    EVENTS_DATA = json.load(f)
+def load_season_data(year: int):
+    """Load data files for a specific season."""
+    # Current season uses no suffix, past seasons use _YEAR suffix
+    suffix = "" if year == CURRENT_SEASON else f"_{year}"
+
+    players_file = DATA_DIR / f"players{suffix}.json"
+    events_file = DATA_DIR / f"events{suffix}.json"
+    matches_file = DATA_DIR / f"matches{suffix}.json"
+
+    players = []
+    events = []
+    matches = []
+
+    if players_file.exists():
+        with open(players_file) as f:
+            players = json.load(f)
+
+    if events_file.exists():
+        with open(events_file) as f:
+            events = json.load(f)
+
+    if matches_file.exists():
+        with open(matches_file) as f:
+            matches = json.load(f)
+
+    return players, events, matches
+
+# Load data for all seasons
+SEASON_DATA = {
+    2026: load_season_data(2026),
+    2025: load_season_data(2025),
+    2024: load_season_data(2024),
+}
+
+# Default to current season for backward compatibility
+PLAYERS_DATA = SEASON_DATA[CURRENT_SEASON][0]
+EVENTS_DATA = SEASON_DATA[CURRENT_SEASON][1]
+MATCHES_DATA = SEASON_DATA[CURRENT_SEASON][2]
 
 # Load logo as base64 for header
 LOGO_BASE64 = ""
@@ -231,30 +469,35 @@ if logo_path.exists():
     with open(logo_path, "rb") as f:
         LOGO_BASE64 = base64.b64encode(f.read()).decode('utf-8')
 
-# Load matches data (may not exist yet - run export_data.py to create it)
-MATCHES_DATA = []
-matches_file = DATA_DIR / "matches.json"
-if matches_file.exists():
-    with open(matches_file) as f:
-        MATCHES_DATA = json.load(f)
+# Build lookups for each season
+SEASON_LOOKUPS = {}
+for year, (players, events, matches) in SEASON_DATA.items():
+    SEASON_LOOKUPS[year] = {
+        "player_lookup": {p["name"]: p for p in players},
+        "match_lookup": {m["match_id"]: m for m in matches},
+        "minutes_lookup": {p["name"]: p.get("mins", 0) or 0 for p in players},
+    }
 
-PLAYER_LOOKUP = {p["name"]: p for p in PLAYERS_DATA}
-MATCH_LOOKUP = {m["match_id"]: m for m in MATCHES_DATA}
-# Pre-compute minutes lookup for sorting
-MINUTES_LOOKUP = {p["name"]: p.get("mins", 0) or 0 for p in PLAYERS_DATA}
+# Default lookups (for backward compatibility)
+PLAYER_LOOKUP = SEASON_LOOKUPS[CURRENT_SEASON]["player_lookup"]
+MATCH_LOOKUP = SEASON_LOOKUPS[CURRENT_SEASON]["match_lookup"]
+MINUTES_LOOKUP = SEASON_LOOKUPS[CURRENT_SEASON]["minutes_lookup"]
 
-def get_player_matches(player_id):
+def get_player_matches(player_id, season: int = CURRENT_SEASON):
     """Get list of matches a player appeared in."""
+    events_data = SEASON_DATA[season][1]
+    match_lookup = SEASON_LOOKUPS[season]["match_lookup"]
+
     match_ids = set()
-    for e in EVENTS_DATA:
+    for e in events_data:
         if e.get("player_id") == player_id and e.get("match_id"):
             match_ids.add(e["match_id"])
 
     # Get match details and sort by date
     matches = []
     for mid in match_ids:
-        if mid in MATCH_LOOKUP:
-            matches.append(MATCH_LOOKUP[mid])
+        if mid in match_lookup:
+            matches.append(match_lookup[mid])
 
     # Sort by date descending
     matches.sort(key=lambda m: m.get("start_date", ""), reverse=True)
@@ -306,20 +549,24 @@ def sanitize_id(name):
     return safe
 
 
-def get_player_data(name):
+def get_player_data(name, player_lookup=None):
     """Get player data by name, with fuzzy matching."""
-    if name in PLAYER_LOOKUP:
-        return PLAYER_LOOKUP[name]
+    if player_lookup is None:
+        player_lookup = PLAYER_LOOKUP
+    if name in player_lookup:
+        return player_lookup[name]
     name_lower = name.lower()
-    for pname, pdata in PLAYER_LOOKUP.items():
+    for pname, pdata in player_lookup.items():
         if name_lower in pname.lower() or pname.lower() in name_lower:
             return pdata
     return None
 
 
-def get_game_stats(player_id, match_id):
+def get_game_stats(player_id, match_id, events_data=None):
     """Calculate stats for a specific game from events data."""
-    events = [e for e in EVENTS_DATA if e.get("player_id") == player_id and str(e.get("match_id")) == str(match_id)]
+    if events_data is None:
+        events_data = EVENTS_DATA
+    events = [e for e in events_data if e.get("player_id") == player_id and str(e.get("match_id")) == str(match_id)]
 
     if not events:
         return None
@@ -517,8 +764,17 @@ def format_percentile(percentile):
     return f"({p}%)"
 
 
-# Calculate percentiles on startup
-PLAYERS_DATA = calculate_percentiles(PLAYERS_DATA)
+# Calculate percentiles on startup for all seasons
+for year in SEASON_DATA:
+    players, events, matches = SEASON_DATA[year]
+    if players:
+        SEASON_DATA[year] = (calculate_percentiles(players), events, matches)
+        # Update lookups with percentile data
+        SEASON_LOOKUPS[year]["player_lookup"] = {p["name"]: p for p in SEASON_DATA[year][0]}
+
+# Update default PLAYERS_DATA with percentiles
+PLAYERS_DATA = SEASON_DATA[CURRENT_SEASON][0]
+PLAYER_LOOKUP = SEASON_LOOKUPS[CURRENT_SEASON]["player_lookup"]
 
 
 def create_pitch_figure(figsize=(10, 15)):
@@ -1167,6 +1423,161 @@ app_ui = ui.page_fluid(
                 color: {TEXT_COLOR};
             }}
 
+            /* Team Rankings styles */
+            .team-rankings {{
+                margin-top: 15px;
+                padding: 15px;
+                background-color: rgba(255,255,255,0.03);
+                border-radius: 8px;
+            }}
+            .team-rankings h4 {{
+                color: {ACCENT_GREEN};
+                font-size: 14px;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                margin: 0 0 12px 0;
+            }}
+            .ranking-category-buttons {{
+                display: flex;
+                flex-wrap: wrap;
+                gap: 6px;
+                margin-bottom: 12px;
+            }}
+            .ranking-category-btn {{
+                background: transparent;
+                border: 1px solid #444;
+                color: {TEXT_COLOR};
+                padding: 5px 12px;
+                border-radius: 4px;
+                font-size: 11px;
+                cursor: pointer;
+                transition: all 0.2s;
+            }}
+            .ranking-category-btn:hover {{
+                background-color: rgba(150, 211, 95, 0.15);
+                border-color: {ACCENT_GREEN};
+            }}
+            .ranking-category-btn.active {{
+                background-color: {ACCENT_GREEN};
+                border-color: {ACCENT_GREEN};
+                color: #000;
+                font-weight: bold;
+            }}
+            .ranking-table {{
+                width: 100%;
+                border-collapse: collapse;
+                font-size: 11px;
+            }}
+            .ranking-table th {{
+                color: {SUBTEXT_COLOR};
+                font-weight: normal;
+                text-transform: uppercase;
+                letter-spacing: 0.5px;
+                padding: 6px 4px;
+                text-align: left;
+                border-bottom: 1px solid #333;
+                font-size: 10px;
+            }}
+            .ranking-table th.stat-col {{
+                text-align: right;
+                padding-right: 8px;
+            }}
+            .ranking-table td {{
+                padding: 6px 4px;
+                border-bottom: 1px solid rgba(255,255,255,0.05);
+            }}
+            .ranking-table td.rank-col {{
+                color: {SUBTEXT_COLOR};
+                width: 24px;
+                text-align: center;
+            }}
+            .ranking-table td.player-col {{
+                color: {TEXT_COLOR};
+            }}
+            .ranking-table td.stat-col {{
+                text-align: right;
+                padding-right: 8px;
+                font-weight: 600;
+                color: {ACCENT_GREEN};
+            }}
+            .ranking-table tbody tr {{
+                cursor: pointer;
+                transition: background-color 0.15s ease;
+            }}
+            .ranking-table tbody tr:hover {{
+                background-color: rgba(150, 211, 95, 0.1);
+            }}
+            .ranking-table tbody tr:hover td.player-col {{
+                color: {ACCENT_GREEN};
+            }}
+            .ranking-table tr.highlighted {{
+                background-color: rgba(150, 211, 95, 0.2);
+            }}
+            .ranking-table tr.highlighted td.player-col {{
+                color: {ACCENT_GREEN};
+                font-weight: 600;
+            }}
+            .ranking-stat-selector {{
+                display: flex;
+                gap: 8px;
+                margin-bottom: 10px;
+                flex-wrap: wrap;
+            }}
+            .ranking-stat-btn {{
+                background: transparent;
+                border: 1px solid #333;
+                color: {SUBTEXT_COLOR};
+                padding: 3px 8px;
+                border-radius: 3px;
+                font-size: 10px;
+                cursor: pointer;
+                transition: all 0.2s;
+            }}
+            .ranking-stat-btn:hover {{
+                border-color: {ACCENT_GREEN};
+                color: {TEXT_COLOR};
+            }}
+            .ranking-stat-btn.active {{
+                background-color: rgba(150, 211, 95, 0.2);
+                border-color: {ACCENT_GREEN};
+                color: {ACCENT_GREEN};
+            }}
+            /* Defiance mode for team rankings */
+            body.defiance-mode .team-rankings h4 {{
+                color: {DEFIANCE_BLUE} !important;
+            }}
+            body.defiance-mode .ranking-category-btn:hover {{
+                background-color: rgba(91, 192, 235, 0.15) !important;
+                border-color: {DEFIANCE_BLUE} !important;
+            }}
+            body.defiance-mode .ranking-category-btn.active {{
+                background-color: {DEFIANCE_BLUE} !important;
+                border-color: {DEFIANCE_BLUE} !important;
+            }}
+            body.defiance-mode .ranking-table td.stat-col {{
+                color: {DEFIANCE_BLUE} !important;
+            }}
+            body.defiance-mode .ranking-table tbody tr:hover {{
+                background-color: rgba(91, 192, 235, 0.1) !important;
+            }}
+            body.defiance-mode .ranking-table tbody tr:hover td.player-col {{
+                color: {DEFIANCE_BLUE} !important;
+            }}
+            body.defiance-mode .ranking-table tr.highlighted {{
+                background-color: rgba(91, 192, 235, 0.2) !important;
+            }}
+            body.defiance-mode .ranking-table tr.highlighted td.player-col {{
+                color: {DEFIANCE_BLUE} !important;
+            }}
+            body.defiance-mode .ranking-stat-btn:hover {{
+                border-color: {DEFIANCE_BLUE} !important;
+            }}
+            body.defiance-mode .ranking-stat-btn.active {{
+                background-color: rgba(91, 192, 235, 0.2) !important;
+                border-color: {DEFIANCE_BLUE} !important;
+                color: {DEFIANCE_BLUE} !important;
+            }}
+
             /* Mobile responsive styles */
             @media (max-width: 900px) {{
                 .main-container {{
@@ -1238,10 +1649,22 @@ app_ui = ui.page_fluid(
                     selected="first_team",
                     inline=True
                 ),
+                # Season selector (dropdown)
+                ui.div(
+                    ui.input_select(
+                        "season_select",
+                        None,
+                        choices={"2026": "2026", "2025": "2025", "2024": "2024"},
+                        selected="2025",
+                        width="90px"
+                    ),
+                    style="margin-left: auto;"
+                ),
                 style="display: flex; align-items: center; gap: 20px; margin-bottom: 10px;"
             ),
             ui.output_ui("pitch_display"),
             ui.output_ui("roster_summary"),
+            ui.output_ui("team_rankings"),
             class_="pitch-panel"
         ),
 
@@ -1372,24 +1795,88 @@ def server(input, output, session):
     # Reactive value for per 90 mode
     per_90_mode = reactive.value(False)
 
+    # Reactive value for team rankings category
+    # Options: "passing", "carrying", "reception", "shooting", "defensive"
+    ranking_category = reactive.value("passing")
+
+    # Reactive value for selected stat within ranking category
+    ranking_stat = reactive.value(None)
+
+    # Reactive value for rankings per 90 mode
+    ranking_per_90 = reactive.value(False)
+
+    def get_current_season():
+        """Get the currently selected season as an integer."""
+        return int(input.season_select())
+
     def get_current_team_data():
         """Get the depth chart, position order, and coords for selected team."""
+        season = get_current_season()
         if input.team_select() == "defiance":
-            return DEFIANCE_DEPTH_CHART, DEFIANCE_POSITION_ORDER, DEFIANCE_POSITION_COORDS
-        return DEPTH_CHART, POSITION_ORDER, POSITION_COORDS
+            # Return correct Defiance depth chart based on season
+            if season == 2024:
+                return DEFIANCE_DEPTH_CHART_2024, DEFIANCE_POSITION_ORDER, DEFIANCE_POSITION_COORDS
+            elif season == 2026:
+                return DEFIANCE_DEPTH_CHART_2026, DEFIANCE_POSITION_ORDER, DEFIANCE_POSITION_COORDS
+            return DEFIANCE_DEPTH_CHART, DEFIANCE_POSITION_ORDER, DEFIANCE_POSITION_COORDS  # 2025 default
+        # Return correct Sounders depth chart based on season
+        if season == 2024:
+            return DEPTH_CHART_2024, POSITION_ORDER, POSITION_COORDS
+        elif season == 2026:
+            return DEPTH_CHART_2026, POSITION_ORDER, POSITION_COORDS
+        return DEPTH_CHART, POSITION_ORDER, POSITION_COORDS  # 2025 default
+
+    def get_season_players_data():
+        """Get players data for current season."""
+        season = get_current_season()
+        return SEASON_DATA[season][0]
+
+    def get_season_events_data():
+        """Get events data for current season."""
+        season = get_current_season()
+        return SEASON_DATA[season][1]
+
+    def get_season_matches_data():
+        """Get matches data for current season."""
+        season = get_current_season()
+        return SEASON_DATA[season][2]
+
+    def get_season_player_lookup():
+        """Get player lookup dict for current season."""
+        season = get_current_season()
+        return SEASON_LOOKUPS[season]["player_lookup"]
+
+    def get_season_match_lookup():
+        """Get match lookup dict for current season."""
+        season = get_current_season()
+        return SEASON_LOOKUPS[season]["match_lookup"]
+
+    def get_season_minutes_lookup():
+        """Get minutes lookup dict for current season."""
+        season = get_current_season()
+        return SEASON_LOOKUPS[season]["minutes_lookup"]
+
+    @reactive.effect
+    @reactive.event(input.season_select)
+    def _reset_on_season_change():
+        """Reset player selection when season changes."""
+        selected_player.set(None)
+        selected_game.set(None)
+        stat_visualization.set(None)
 
     @output
     @render.ui
     def team_title():
         """Render the team title based on selection."""
         is_defiance = input.team_select() == "defiance"
+        season = get_current_season()
         if is_defiance:
             title = "TACOMA DEFIANCE DEPTH CHART"
             color = DEFIANCE_BLUE
             # Use img onerror to execute JS since script tags don't run in innerHTML
             js_trigger = '<img src="" onerror="document.body.classList.add(\'defiance-mode\');" style="display:none;">'
         else:
-            title = "SEATTLE SOUNDERS DEPTH CHART"
+            title = f"SEATTLE SOUNDERS {season} DEPTH CHART"
             color = ACCENT_GREEN
             js_trigger = '<img src="" onerror="document.body.classList.remove(\'defiance-mode\');" style="display:none;">'
         return ui.HTML(f'{js_trigger}<h1 style="margin: 8px 0 0 0; text-align: center; font-size: 24px; color: {color};">{title}</h1>')
@@ -1412,7 +1899,8 @@ def server(input, output, session):
 
             # Sort players within each position by minutes (descending)
             players_in_pos = depth_chart[pos]
-            sorted_players = sorted(players_in_pos, key=lambda p: MINUTES_LOOKUP.get(p["name"], 0), reverse=True)
+            minutes_lookup = get_season_minutes_lookup()
+            sorted_players = sorted(players_in_pos, key=lambda p: minutes_lookup.get(p["name"], 0), reverse=True)
 
             for player in sorted_players:
                 name = player["name"]
@@ -1435,12 +1923,13 @@ def server(input, output, session):
         if not name:
             return ui.p("Select a player first", style=f"color: {SUBTEXT_COLOR}; font-size: 12px;")
 
-        player = get_player_data(name)
+        player = get_player_data(name, get_season_player_lookup())
         if not player:
             return ui.p("No game data", style=f"color: {SUBTEXT_COLOR}; font-size: 12px;")
 
         player_id = player.get("player_id")
-        matches = get_player_matches(player_id)
+        season = get_current_season()
+        matches = get_player_matches(player_id, season)
 
         if not matches:
             return ui.p("No game data available. Run export_data.py to update.",
@@ -1633,8 +2122,9 @@ def server(input, output, session):
             players_raw = depth_chart[pos]
 
             # Sort players by minutes played (descending)
+            player_lookup = get_season_player_lookup()
             def get_player_minutes(p):
-                player_data = get_player_data(p["name"])
+                player_data = get_player_data(p["name"], player_lookup)
                 mins = player_data.get("mins") if player_data else 0
                 return mins if mins is not None else 0
             players = sorted(players_raw, key=get_player_minutes, reverse=True)
@@ -1742,8 +2232,9 @@ def server(input, output, session):
             players_raw = depth_chart[pos]
 
             # Sort players by minutes played (descending) - same as above
+            player_lookup = get_season_player_lookup()
             def get_player_mins(p):
-                player_data = get_player_data(p["name"])
+                player_data = get_player_data(p["name"], player_lookup)
                 mins = player_data.get("mins") if player_data else 0
                 return mins if mins is not None else 0
             players = sorted(players_raw, key=get_player_mins, reverse=True)
@@ -1916,6 +2407,383 @@ def server(input, output, session):
         return ui.HTML(summary_html)
 
 
+    @output
+    @render.ui
+    def team_rankings():
+        """Display team stat rankings below the roster summary."""
+        season = get_current_season()
+        players_data = get_season_players_data()
+        events_data = get_season_events_data()
+        current_category = ranking_category.get()
+        current_stat = ranking_stat.get()
+        current_player = selected_player.get()
+        game_filter = selected_game.get()
+        is_per_90 = ranking_per_90.get()
+
+        # Determine accent color based on team
+        is_defiance = input.team_select() == "defiance"
+        accent_color = DEFIANCE_BLUE if is_defiance else ACCENT_GREEN
+
+        # Define stat categories with their stats - similar to fbref
+        # Note: "passes" = successful passes, "total_passes" = all attempts
+        RANKING_CATEGORIES = {
+            "passing": {
+                "label": "Passing",
+                "heatmap_type": "Pass",
+                "stats": [
+                    ("passes", "Passes", False, "all_passes"),
+                    ("progressive_passes", "Prog", False, "progressive_passes"),
+                    ("key_passes", "Key", False, "key_passes"),
+                    ("final_third_passes", "Final 3rd", False, "final_third_passes"),
+                    ("deep_passes", "Deep", False, "deep_passes"),
+                    ("xg_assisted", "xGA", True, None),
+                    ("pv_passing", "PV+", True, None),
+                ]
+            },
+            "carrying": {
+                "label": "Carrying",
+                "heatmap_type": "Carry",
+                "stats": [
+                    ("carries", "Carries", False, "all_carries"),
+                    ("progressive_carries", "Prog", False, "progressive_carries"),
+                    ("final_third_carries", "Final 3rd", False, "final_third_carries"),
+                    ("deep_carries", "Deep", False, "deep_carries"),
+                    ("pv_carrying", "PV+", True, None),
+                ]
+            },
+            "reception": {
+                "label": "Receiving",
+                "heatmap_type": "Reception",
+                "stats": [
+                    ("receptions", "Recv", False, "all_receptions"),
+                    ("final_third_receptions", "Final 3rd", False, "final_third_receptions"),
+                    ("deep_receptions", "Deep", False, "deep_receptions"),
+                    ("pv_receiving", "PV+", True, None),
+                ]
+            },
+            "shooting": {
+                "label": "Shooting",
+                "heatmap_type": "Shot",
+                "stats": [
+                    ("goals", "Goals", False, "goals"),
+                    ("shots", "Shots", False, "all_shots"),
+                    ("shots_on_target", "SOT", False, "shots_on_target"),
+                    ("total_xg", "xG", True, None),
+                    ("pv_shooting", "PV+", True, None),
+                ]
+            },
+            "defensive": {
+                "label": "Defensive",
+                "heatmap_type": "Defensive",
+                "stats": [
+                    ("defensive_actions", "Actions", False, "all_defensive"),
+                    ("tackles", "Tackles", False, "tackles"),
+                    ("interceptions", "Int", False, "interceptions"),
+                    ("clearances", "Clr", False, "clearances"),
+                    ("ball_recoveries", "Recv", False, "recoveries"),
+                    ("pv_defending", "PV+", True, None),
+                ]
+            },
+        }
+
+        # If game filter is active, calculate stats from events for that game
+        if game_filter and events_data:
+            # Get all player_ids who have events in this game
+            game_events = [e for e in events_data if str(e.get("match_id")) == str(game_filter)]
+            game_player_ids = set(e.get("player_id") for e in game_events if e.get("player_id"))
+
+            # Build player stats from game events
+            active_players = []
+            for player in players_data:
+                player_id = player.get("player_id")
+                if player_id in game_player_ids:
+                    # Calculate game-specific stats
+                    game_stats = get_game_stats(player_id, game_filter, events_data)
+                    if game_stats:
+                        # Merge player info with game stats
+                        player_with_game_stats = {**player, **game_stats}
+                        active_players.append(player_with_game_stats)
+        else:
+            # Use season totals - filter players with actual minutes played
+            active_players = [p for p in players_data if (p.get("mins") or 0) > 0]
+
+        if not active_players:
+            return ui.HTML('<div class="team-rankings"><p style="color: #888; font-size: 12px;">No player data available</p></div>')
+
+        # Build category buttons
+        category_buttons = ""
+        for cat_key, cat_info in RANKING_CATEGORIES.items():
+            active_class = "active" if cat_key == current_category else ""
+            category_buttons += f'''
+                <button class="ranking-category-btn {active_class}" data-category="{cat_key}">
+                    {cat_info["label"]}
+                </button>
+            '''
+
+        # Get current category stats
+        cat_data = RANKING_CATEGORIES.get(current_category, RANKING_CATEGORIES["passing"])
+        stats_list = cat_data["stats"]
+        heatmap_type = cat_data.get("heatmap_type", "Overview")
+
+        # Default to first stat if none selected or invalid
+        valid_stat_keys = [s[0] for s in stats_list]
+        if current_stat not in valid_stat_keys:
+            current_stat = stats_list[0][0]
+
+        # Build stat selector buttons
+        stat_buttons = ""
+        for stat_tuple in stats_list:
+            stat_key_btn, stat_label, is_decimal, viz_type = stat_tuple
+            active_class = "active" if stat_key_btn == current_stat else ""
+            stat_buttons += f'''
+                <button class="ranking-stat-btn {active_class}" data-stat="{stat_key_btn}">
+                    {stat_label}
+                </button>
+            '''
+
+        # Get stat info for formatting
+        stat_info = next((s for s in stats_list if s[0] == current_stat), stats_list[0])
+        stat_key, stat_label, is_decimal, viz_type = stat_info
+
+        # Calculate per 90 values if enabled
+        def get_stat_value(player):
+            val = player.get(stat_key, 0)
+            val = float(val) if val is not None else 0
+            if is_per_90:
+                mins = player.get("mins", 0) or 1
+                if mins > 0:
+                    val = val / (mins / 90)
+            return val
+
+        # Sort players by the selected stat (descending)
+        sorted_players = sorted(active_players, key=get_stat_value, reverse=True)
+
+        # Take top 10 for display
+        top_players = sorted_players[:10]
+
+        # Build ranking table rows - make player names clickable
+        table_rows = ""
+        for idx, player in enumerate(top_players, 1):
+            name = player.get("name", "Unknown")
+            val = get_stat_value(player)
+
+            # Format value
+            if is_decimal or is_per_90:
+                formatted_val = f"{val:.2f}"
+            else:
+                formatted_val = str(int(val)) if val == int(val) else f"{val:.1f}"
+
+            # Highlight if this is the selected player
+            highlighted = "highlighted" if name == current_player else ""
+
+            table_rows += f'''
+                <tr class="{highlighted}" data-player="{name}" style="cursor: pointer;">
+                    <td class="rank-col">{idx}</td>
+                    <td class="player-col">{name}</td>
+                    <td class="stat-col">{formatted_val}</td>
+                </tr>
+            '''
+
+        # Get full stat name for header
+        full_stat_names = {
+            "passes": "Successful Passes",
+            "total_passes": "Total Passes",
+            "progressive_passes": "Progressive Passes",
+            "key_passes": "Key Passes",
+            "final_third_passes": "Final Third Passes",
+            "deep_passes": "Deep Passes",
+            "xg_assisted": "xG Assisted",
+            "pv_passing": "Passing PV+",
+            "carries": "Carries",
+            "progressive_carries": "Progressive Carries",
+            "final_third_carries": "Final Third Carries",
+            "deep_carries": "Deep Carries",
+            "pv_carrying": "Carrying PV+",
+            "receptions": "Receptions",
+            "final_third_receptions": "Final Third Receptions",
+            "deep_receptions": "Deep Receptions",
+            "pv_receiving": "Receiving PV+",
+            "goals": "Goals",
+            "shots": "Shots",
+            "shots_on_target": "Shots on Target",
+            "total_xg": "Expected Goals",
+            "pv_shooting": "Shooting PV+",
+            "defensive_actions": "Defensive Actions",
+            "tackles": "Tackles",
+            "interceptions": "Interceptions",
+            "clearances": "Clearances",
+            "ball_recoveries": "Ball Recoveries",
+            "pv_defending": "Defending PV+",
+        }
+        stat_header = full_stat_names.get(stat_key, stat_label)
+        if is_per_90:
+            stat_header += " /90"
+
+        # Per 90 toggle button
+        per_90_active = "active" if is_per_90 else ""
+        per_90_btn = f'''
+            <button class="ranking-stat-btn {per_90_active}" id="ranking-per90-btn" style="margin-left: auto;">
+                Per 90
+            </button>
+        '''
+
+        # Game filter indicator
+        game_indicator = ""
+        if game_filter:
+            match_lookup = get_season_match_lookup()
+            match_info = match_lookup.get(game_filter, {})
+            opponent = match_info.get("opponent", "Unknown")
+            venue = match_info.get("venue", "")
+            game_indicator = f'<div style="font-size: 10px; color: {accent_color}; margin-bottom: 8px;">Filtered: {venue} {opponent}</div>'
+
+        rankings_html = f'''
+        <div class="team-rankings">
+            <div style="display: flex; align-items: center; margin-bottom: 8px;">
+                <h4 style="margin: 0;">TEAM RANKINGS</h4>
+                {per_90_btn}
+            </div>
+            {game_indicator}
+            <div class="ranking-category-buttons">
+                {category_buttons}
+            </div>
+            <div class="ranking-stat-selector">
+                {stat_buttons}
+            </div>
+            <table class="ranking-table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Player</th>
+                        <th class="stat-col">{stat_header}</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {table_rows}
+                </tbody>
+            </table>
+        </div>
+        <script>
+            // Category button clicks
+            document.querySelectorAll('.ranking-category-btn').forEach(function(btn) {{
+                btn.addEventListener('click', function() {{
+                    var category = this.getAttribute('data-category');
+                    Shiny.setInputValue('ranking_category_click', category, {{priority: 'event'}});
+                }});
+            }});
+            // Stat button clicks
+            document.querySelectorAll('.ranking-stat-btn:not(#ranking-per90-btn)').forEach(function(btn) {{
+                btn.addEventListener('click', function() {{
+                    var stat = this.getAttribute('data-stat');
+                    Shiny.setInputValue('ranking_stat_click', stat, {{priority: 'event'}});
+                }});
+            }});
+            // Per 90 toggle
+            var per90Btn = document.getElementById('ranking-per90-btn');
+            if (per90Btn) {{
+                per90Btn.addEventListener('click', function() {{
+                    Shiny.setInputValue('ranking_per90_click', Date.now(), {{priority: 'event'}});
+                }});
+            }}
+            // Player row clicks - select player and update visualizations
+            document.querySelectorAll('.ranking-table tbody tr').forEach(function(row) {{
+                row.addEventListener('click', function() {{
+                    var playerName = this.getAttribute('data-player');
+                    if (playerName) {{
+                        Shiny.setInputValue('ranking_player_click', playerName, {{priority: 'event'}});
+                    }}
+                }});
+            }});
+        </script>
+        '''
+
+        return ui.HTML(rankings_html)
+
+
+    # Handle ranking category button clicks
+    @reactive.effect
+    @reactive.event(input.ranking_category_click)
+    def _handle_ranking_category():
+        new_category = input.ranking_category_click()
+        if new_category:
+            ranking_category.set(new_category)
+            # Reset stat to first stat of new category
+            ranking_stat.set(None)
+
+            # Update heatmap type to match category
+            category_to_heatmap = {
+                "passing": "Pass",
+                "carrying": "Carry",
+                "reception": "Reception",
+                "shooting": "Shot",
+                "defensive": "Defensive",
+            }
+            # Note: We can't directly set heatmap_type input, but we can set stat_visualization
+
+
+    # Handle ranking stat button clicks
+    @reactive.effect
+    @reactive.event(input.ranking_stat_click)
+    def _handle_ranking_stat():
+        new_stat = input.ranking_stat_click()
+        if new_stat:
+            ranking_stat.set(new_stat)
+
+            # Map stat to visualization type for action map
+            STAT_TO_VIZ = {
+                "passes": "all_passes",
+                "progressive_passes": "progressive_passes",
+                "key_passes": "key_passes",
+                "final_third_passes": "final_third_passes",
+                "deep_passes": "deep_passes",
+                "carries": "all_carries",
+                "progressive_carries": "progressive_carries",
+                "final_third_carries": "final_third_carries",
+                "deep_carries": "deep_carries",
+                "receptions": "all_receptions",
+                "final_third_receptions": "final_third_receptions",
+                "deep_receptions": "deep_receptions",
+                "goals": "goals",
+                "shots": "all_shots",
+                "shots_on_target": "shots_on_target",
+                "defensive_actions": "all_defensive",
+                "tackles": "tackles",
+                "interceptions": "interceptions",
+                "clearances": "clearances",
+                "ball_recoveries": "recoveries",
+            }
+            viz = STAT_TO_VIZ.get(new_stat)
+            if viz:
+                stat_visualization.set(viz)
+
+
+    # Handle ranking per 90 toggle
+    @reactive.effect
+    @reactive.event(input.ranking_per90_click)
+    def _handle_ranking_per90():
+        current = ranking_per_90.get()
+        ranking_per_90.set(not current)
+
+
+    # Handle player click from rankings
+    @reactive.effect
+    @reactive.event(input.ranking_player_click)
+    def _handle_ranking_player_click():
+        player_name = input.ranking_player_click()
+        if player_name:
+            selected_player.set(player_name)
+
+            # Map current category to heatmap type
+            current_cat = ranking_category.get()
+            category_to_heatmap = {
+                "passing": "Pass",
+                "carrying": "Carry",
+                "reception": "Reception",
+                "shooting": "Shot",
+                "defensive": "Defensive",
+            }
+            # We could update heatmap_type here if we had access to update inputs
+
+
     def format_salary(salary):
         """Format salary as currency (e.g., $2,500,000)."""
         if salary is None:
@@ -1933,12 +2801,13 @@ def server(input, output, session):
         if not name:
             return ui.p("Select a player")
 
-        player = get_player_data(name)
+        player = get_player_data(name, get_season_player_lookup())
 
         # Get all roster designations for this player from depth chart
         roster_badges = []
         player_entry = None
-        for pos, players in DEPTH_CHART.items():
+        depth_chart, _, _ = get_current_team_data()
+        for pos, players in depth_chart.items():
             for p in players:
                 if p["name"] == name:
                     player_entry = p
@@ -2097,14 +2966,14 @@ def server(input, output, session):
         if not name:
             return ui.p("Select a player")
 
-        player = get_player_data(name)
+        player = get_player_data(name, get_season_player_lookup())
         if not player:
             return ui.p("No stats available")
 
         # Check for game filter - use game-specific stats if active
         game_filter = selected_game.get()
         if game_filter and player.get("player_id"):
-            game_stats = get_game_stats(player.get("player_id"), game_filter)
+            game_stats = get_game_stats(player.get("player_id"), game_filter, get_season_events_data())
             if game_stats:
                 # Merge game stats with player data (keep player info like name, position)
                 player = {**player, **game_stats}
@@ -2320,12 +3189,14 @@ def server(input, output, session):
         stat_visualization.set(input.stat_viz_click())
 
 
-    def render_trajectory_viz(player_id, viz_type, game_filter=None, accent_color=None):
+    def render_trajectory_viz(player_id, viz_type, game_filter=None, accent_color=None, events_data=None):
         """Render trajectory visualization with comet effect (line from start to end)."""
         from matplotlib.collections import LineCollection
 
         if accent_color is None:
             accent_color = ACCENT_GREEN
+        if events_data is None:
+            events_data = get_season_events_data()
 
         # Define which event types and filters to use for each viz_type
         VIZ_CONFIG = {
@@ -2367,7 +3238,7 @@ def server(input, output, session):
         if isinstance(event_types, str):
             event_types = [event_types]
 
-        events = [e for e in EVENTS_DATA
+        events = [e for e in events_data
                   if e["player_id"] == player_id
                   and e["type_display_name"] in event_types
                   and config["filter"](e)
@@ -2668,14 +3539,17 @@ def server(input, output, session):
             yield b""
             return
 
-        player = get_player_data(name)
+        player = get_player_data(name, get_season_player_lookup())
         if not player:
             yield b""
             return
 
+        events_data = get_season_events_data()
+
         # Get player entry from depth chart for photo URL
         player_entry = None
-        for pos, players in DEPTH_CHART.items():
+        depth_chart, _, _ = get_current_team_data()
+        for pos, players in depth_chart.items():
             for p in players:
                 if p["name"] == name:
                     player_entry = p
@@ -2720,13 +3594,15 @@ def server(input, output, session):
             map_title = f"{heatmap_type} - {loc_label}"
 
         # Get game context for title
+        season = get_current_season()
         if game_filter:
-            match_info = MATCH_LOOKUP.get(str(game_filter), {})
+            match_lookup = get_season_match_lookup()
+            match_info = match_lookup.get(str(game_filter), {})
             opponent = match_info.get('opponent', 'Unknown')
             match_date = match_info.get('start_date', '')
             game_context = f"vs {opponent} ({match_date})"
         else:
-            game_context = "2025 Season"
+            game_context = f"{season} Season"
 
         # Determine accent color based on team selection
         is_defiance = input.team_select() == "defiance"
@@ -2776,7 +3652,7 @@ def server(input, output, session):
             }
             if viz_type in VIZ_CONFIG_EXPORT:
                 evt_type, evt_filter = VIZ_CONFIG_EXPORT[viz_type]
-                events = [e for e in EVENTS_DATA if e["player_id"] == player_id
+                events = [e for e in events_data if e["player_id"] == player_id
                          and e["type_display_name"] == evt_type and evt_filter(e)
                          and e["x"] is not None and e["y"] is not None]
             else:
@@ -2791,7 +3667,7 @@ def server(input, output, session):
                     "final_third_receptions": ["Reception"], "deep_receptions": ["Reception"]
                 }
                 evt_types = evt_map.get(viz_type, [viz_type])
-                events = [e for e in EVENTS_DATA if e["player_id"] == player_id
+                events = [e for e in events_data if e["player_id"] == player_id
                          and e["type_display_name"] in evt_types
                          and e["x"] is not None and e["y"] is not None]
                 # Filter for zone-based receptions
@@ -2806,7 +3682,7 @@ def server(input, output, session):
                       "Defensive": ["Tackle", "Interception", "Clearance", "BallRecovery"],
                       "Overview": ["Pass", "Carry", "Reception", "Shot", "MissedShots", "SavedShot", "ShotOnPost", "Goal", "Tackle", "Interception", "Clearance", "BallRecovery"]}
             evt_types = evt_map.get(heatmap_type, [heatmap_type])
-            events = [e for e in EVENTS_DATA if e["player_id"] == player_id
+            events = [e for e in events_data if e["player_id"] == player_id
                      and e["type_display_name"] in evt_types
                      and e["x"] is not None and e["y"] is not None]
 
@@ -2990,13 +3866,15 @@ def server(input, output, session):
         if not name:
             return ui.p("Select a player")
 
-        player = get_player_data(name)
+        player = get_player_data(name, get_season_player_lookup())
         if not player:
             return ui.p("No event data available")
 
         player_id = player.get("player_id")
         if not player_id:
             return ui.p("Player ID not found")
+
+        events_data = get_season_events_data()
 
         # Get location toggle and current mode
         loc_toggle = location_toggle.get()
@@ -3075,13 +3953,13 @@ def server(input, output, session):
 
         # Filter events - for destination, also require end_x/end_y
         if use_destination:
-            events = [e for e in EVENTS_DATA
+            events = [e for e in events_data
                       if e["player_id"] == player_id
                       and e["type_display_name"] in event_types
                       and event_filter(e)
                       and e["end_x"] is not None and e["end_y"] is not None]
         else:
-            events = [e for e in EVENTS_DATA
+            events = [e for e in events_data
                       if e["player_id"] == player_id
                       and e["type_display_name"] in event_types
                       and event_filter(e)
