@@ -21,7 +21,7 @@ MATCH_THRESHOLD = 80
 PROJECT_URL = "https://vvwfcbbyddyodkjuwdbq.supabase.co"
 API_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InZ2d2ZjYmJ5ZGR5b2RranV3ZGJxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTk2NzE2NjQsImV4cCI6MjA3NTI0NzY2NH0.lpAOWtF-sYFUyhvgjVVVb_EkxUbWnoclf7RL0Qrz-BE"
 
-# Manual mappings for players that don't fuzzy match well
+# Manual mappings for MLS website scraped names -> database player_id
 MANUAL_MAPPINGS_2024 = {
     'J. Morris': '313037_(2024)',        # Jordan Morris
     'A. Rusnák': '141927_(2024)',         # Albert Rusnák
@@ -41,6 +41,44 @@ MANUAL_MAPPINGS_2024 = {
     'A. Lopez': '527018_(2024)',          # Antino Lopez
     'C. Roldán': '271592_(2024)',         # Cristian Roldan
 }
+
+# ASA player names -> database player_id (for salary data matching)
+# ASA uses full names with accents
+ASA_NAME_TO_DB_2024 = {
+    'Albert Rusnák': '141927_(2024)',
+    'Jordan Morris': '313037_(2024)',
+    'Cristian Roldan': '271592_(2024)',
+    'João Paulo': '104866_(2024)',
+    'Raúl Ruidíaz': '85915_(2024)',
+    'Obed Vargas': '419580_(2024)',
+    'Alex Roldan': '354086_(2024)',
+    'Jackson Ragen': '433622_(2024)',
+    'Nouhou': '335583_(2024)',
+    'Stefan Frei': '72630_(2024)',
+    'Yeimar Gómez Andrade': '247429_(2024)',
+    'Pedro de la Vega': '363582_(2024)',
+    'Josh Atencio': '396104_(2024)',
+    'Reed Baker-Whiting': '415661_(2024)',
+    'Paul Rothrock': '437944_(2024)',
+    'Léo Chú': '389174_(2024)',
+    'Danny Leyva': '373518_(2024)',
+    'Danny Musovski': '396235_(2024)',
+    'Jon Bell': '413742_(2024)',
+    'Cody Baker': '480644_(2024)',
+    'Dylan Teves': '433623_(2024)',
+    'Georgi Minoungou': '481296_(2024)',
+    'Andrew Thomas': '419582_(2024)',
+    'Sota Kitahara': '462097_(2024)',
+    'Nathan': '240917_(2024)',
+    'Stuart Hawkins': '502132_(2024)',
+    'Jacob Castro': '468751_(2024)',
+    'Kalani Kossa-Rienzi': '516205_(2024)',
+    'Antino Lopez': '527018_(2024)',
+    'Braudílio Rodrigues': None,  # Not in database
+}
+
+# Seattle Sounders team_id in ASA
+SEATTLE_ASA_TEAM_ID = 'jYQJ19EqGR'
 # ===================================
 
 
@@ -175,41 +213,65 @@ def get_mls_stats_with_images(club_slug: str, season: int, timeout: int = 25) ->
         driver.quit()
 
 
-def get_asa_salary_data(season: int) -> pd.DataFrame:
-    """Get salary data from American Soccer Analysis."""
+def get_asa_salary_data(season: int) -> list:
+    """Get salary data from American Soccer Analysis for Seattle Sounders.
+
+    Returns a list of dicts with db_player_id, base_salary, and position info.
+    """
     from itscalledsoccer.client import AmericanSoccerAnalysis
 
     print(f"Fetching ASA salary data for {season}...")
     asa = AmericanSoccerAnalysis()
 
-    # Get salary data
+    # Get salary data for Seattle only
     salary_raw = asa.get_player_salaries(leagues=["mls"], season_name=str(season))
     salary_df = pd.DataFrame(salary_raw)
 
-    # Get player info for position data
+    # Filter to Seattle Sounders
+    seattle_salaries = salary_df[salary_df['team_id'] == SEATTLE_ASA_TEAM_ID].copy()
+    print(f"Found {len(seattle_salaries)} Seattle salary records")
+
+    # Get player info for names and positions
     players_df = asa.get_players(leagues=["mls"])
 
-    # Filter to players with this season
-    def has_season(season_list, target_season):
-        if isinstance(season_list, (list, tuple, set)):
-            return any(int(x) == target_season for x in season_list)
-        if isinstance(season_list, (int, str)):
-            return int(season_list) == target_season
-        return False
+    # Merge with player info to get names
+    merged = seattle_salaries.merge(players_df, on="player_id", how="left")
 
-    season_players = players_df[players_df["season_name"].apply(lambda x: has_season(x, season))].copy()
-
-    # Clean up salary (take max per player)
-    salary_clean = salary_df.groupby("player_id", as_index=False).agg({
+    # Deduplicate - take max salary per player
+    merged = merged.groupby("player_name", as_index=False).agg({
         "base_salary": "max",
-        "guaranteed_compensation": "max"
+        "guaranteed_compensation": "max",
+        "primary_broad_position": "first",
+        "primary_general_position": "first",
     })
 
-    # Merge salary with player info
-    merged = season_players.merge(salary_clean, on="player_id", how="left")
+    # Map to database player IDs using ASA_NAME_TO_DB_2024
+    results = []
+    matched = 0
+    unmatched = []
 
-    print(f"Found {len(merged)} players with salary data")
-    return merged
+    for _, row in merged.iterrows():
+        asa_name = row.get('player_name', '')
+        db_player_id = ASA_NAME_TO_DB_2024.get(asa_name)
+
+        if db_player_id:
+            matched += 1
+            results.append({
+                'db_player_id': db_player_id,
+                'asa_name': asa_name,
+                'base_salary': row.get('base_salary'),
+                'guaranteed_compensation': row.get('guaranteed_compensation'),
+                'primary_broad_position': row.get('primary_broad_position'),
+                'primary_general_position': row.get('primary_general_position'),
+            })
+        else:
+            unmatched.append(asa_name)
+
+    print(f"Matched {matched} players to database IDs")
+    if unmatched:
+        print(f"Unmatched ASA players: {unmatched}")
+
+    return results
 
 
 def main():
@@ -233,14 +295,19 @@ def main():
     print("-"*40)
     asa_data = get_asa_salary_data(SEASON)
 
-    # 2. Get MLS stats (GP, GS, Mins, images)
+    # 2. Get MLS stats (GP, GS, Mins, images) - skip if Selenium/ChromeDriver not available
     print("\n" + "-"*40)
     print("Step 2: Scraping MLS website for stats and images...")
     print("-"*40)
-    mls_data = get_mls_stats_with_images(CLUB, SEASON)
-    print(f"Scraped {len(mls_data)} players from MLS website")
+    mls_data = None
+    try:
+        mls_data = get_mls_stats_with_images(CLUB, SEASON)
+        print(f"Scraped {len(mls_data)} players from MLS website")
+    except Exception as e:
+        print(f"Warning: MLS scraping failed ({type(e).__name__}). Proceeding with ASA data only.")
+        print("  (Player images and MLS stats already exist in database from previous runs)")
 
-    # 3. Match MLS data to database players
+    # 3. Match MLS data to database players (if scraping succeeded)
     print("\n" + "-"*40)
     print("Step 3: Matching players...")
     print("-"*40)
@@ -248,57 +315,59 @@ def main():
     matches = []
     unmatched_mls = []
 
-    for _, row in mls_data.iterrows():
-        scraped_name = row['player_name']
+    if mls_data is not None:
+        for _, row in mls_data.iterrows():
+            scraped_name = row['player_name']
 
-        # Check manual mappings first
-        if scraped_name in MANUAL_MAPPINGS_2024:
-            player_id = MANUAL_MAPPINGS_2024[scraped_name]
-            matches.append({
-                'scraped_name': scraped_name,
-                'db_player_id': player_id,
-                'db_name': scraped_name,
-                'gp': row['gp'],
-                'gs': row['gs'],
-                'mins': row['mins'],
-                'sub': row['sub'],
-                'image_url': row['image_url'],
-            })
-            continue
+            # Check manual mappings first
+            if scraped_name in MANUAL_MAPPINGS_2024:
+                player_id = MANUAL_MAPPINGS_2024[scraped_name]
+                matches.append({
+                    'scraped_name': scraped_name,
+                    'db_player_id': player_id,
+                    'db_name': scraped_name,
+                    'gp': row['gp'],
+                    'gs': row['gs'],
+                    'mins': row['mins'],
+                    'sub': row['sub'],
+                    'image_url': row['image_url'],
+                })
+                continue
 
-        match = match_player_to_db(scraped_name, season_players, MATCH_THRESHOLD)
+            match = match_player_to_db(scraped_name, season_players, MATCH_THRESHOLD)
 
-        if match:
-            matches.append({
-                'scraped_name': scraped_name,
-                'db_player_id': match['player_id'],
-                'db_name': match['name'],
-                'gp': row['gp'],
-                'gs': row['gs'],
-                'mins': row['mins'],
-                'sub': row['sub'],
-                'image_url': row['image_url'],
-            })
-        else:
-            unmatched_mls.append(scraped_name)
+            if match:
+                matches.append({
+                    'scraped_name': scraped_name,
+                    'db_player_id': match['player_id'],
+                    'db_name': match['name'],
+                    'gp': row['gp'],
+                    'gs': row['gs'],
+                    'mins': row['mins'],
+                    'sub': row['sub'],
+                    'image_url': row['image_url'],
+                })
+            else:
+                unmatched_mls.append(scraped_name)
 
-    print(f"MLS data matched: {len(matches)} players")
-    if unmatched_mls:
-        print(f"MLS unmatched: {unmatched_mls}")
+        print(f"MLS data matched: {len(matches)} players")
+        if unmatched_mls:
+            print(f"MLS unmatched: {unmatched_mls}")
+    else:
+        print("Skipping MLS matching (scraping failed)")
 
-    # 4. Match ASA salary data to database players
+    # 4. Convert ASA salary data to dict by player_id (already matched via ASA_NAME_TO_DB_2024)
     salary_matches = {}
-    for _, row in asa_data.iterrows():
-        asa_name = row.get('player_name', '')
-        match = match_player_to_db(asa_name, season_players, MATCH_THRESHOLD)
-        if match and pd.notna(row.get('base_salary')):
-            salary_matches[match['player_id']] = {
-                'base_salary': row['base_salary'],
-                'primary_broad_position': row.get('primary_broad_position'),
-                'primary_general_position': row.get('primary_general_position'),
+    for asa_record in asa_data:
+        db_player_id = asa_record.get('db_player_id')
+        if db_player_id and pd.notna(asa_record.get('base_salary')):
+            salary_matches[db_player_id] = {
+                'base_salary': asa_record['base_salary'],
+                'primary_broad_position': asa_record.get('primary_broad_position'),
+                'primary_general_position': asa_record.get('primary_general_position'),
             }
 
-    print(f"Salary data matched: {len(salary_matches)} players")
+    print(f"Salary data available: {len(salary_matches)} players")
 
     # 5. Combine and upload
     print("\n" + "-"*40)

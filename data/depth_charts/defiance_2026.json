@@ -1,0 +1,40 @@
+{
+  "team": "Defiance",
+  "year": 2026,
+  "formation": "343",
+  "positions": ["GK", "LCB", "CB", "RCB", "LM", "LCM", "RCM", "RM", "LW", "ST", "RW"],
+  "depth_chart": {
+    "GK": [
+      {"name": "M.Shour", "designation": "DEF", "academy": true}
+    ],
+    "LCB": [
+      {"name": "A.Lopez", "designation": "DEF", "academy": true}
+    ],
+    "CB": [
+      {"name": "Alvarez", "designation": "DEF"}
+    ],
+    "RCB": [
+    ],
+    "LM": [
+    ],
+    "LCM": [
+      {"name": "Dodzi", "designation": "DEF"},
+      {"name": "Robles", "designation": "DEF", "academy": true}
+    ],
+    "RCM": [
+      {"name": "Kingston", "designation": "DEF"}
+    ],
+    "RM": [
+      {"name": "Gaffney", "designation": "DEF", "academy": true}
+    ],
+    "LW": [
+      {"name": "Gnaulati", "designation": "DEF", "academy": false}
+
+    ],
+    "ST": [
+    ],
+    "RW": [
+      {"name": "Hassan", "designation": "DEF", "academy": true}
+    ]
+  }
+}

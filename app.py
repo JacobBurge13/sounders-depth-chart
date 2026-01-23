@@ -60,16 +60,146 @@ ROSTER_DESIGNATIONS = {
     "SEI": "Season Ending Injury",
 }
 
+# Year-based MLS roster rules for First Team
+# Source: https://www.mlssoccer.com/about/roster-rules-and-regulations
+MLS_ROSTER_RULES = {
+    2024: {
+        "total_max": 30,
+        "senior_max": 20,
+        "supplemental_max": 10,  # Slots 21-30
+        "dp_max": 3,
+        "u22_max": 3,  # 4 U22 model introduced mid-2024, using standard 3
+        "international_max": 8,  # ~241 slots / 30 clubs
+    },
+    2025: {
+        "total_max": 30,
+        "senior_max": 20,
+        "supplemental_max": 11,  # Slots 21-31 (expanded in 2025)
+        "dp_max": 3,
+        "u22_max": 3,  # Can be 4 with U22 Initiative model
+        "international_max": 8,
+    },
+    2026: {
+        "total_max": 30,
+        "senior_max": 20,
+        "supplemental_max": 11,
+        "dp_max": 3,
+        "u22_max": 3,
+        "international_max": 8,
+    },
+}
+
+def get_roster_rules(year: int, team: str = "first_team") -> dict:
+    """Get roster rules for a specific year and team.
+
+    Args:
+        year: The season year (2024, 2025, 2026)
+        team: 'first_team' or 'defiance'
+
+    Returns:
+        Dictionary with roster slot maximums
+    """
+    if team == "defiance":
+        # Defiance (MLS NEXT Pro) doesn't have MLS roster slot limits
+        return {
+            "total_max": None,
+            "senior_max": None,
+            "supplemental_max": None,
+            "dp_max": None,
+            "u22_max": None,
+            "international_max": None,
+        }
+    return MLS_ROSTER_RULES.get(year, MLS_ROSTER_RULES[2025])
+
 # ============================================================
-# DEPTH CHART - MANUALLY ASSIGN PLAYERS TO POSITIONS
+# DEPTH CHART - LOADED FROM JSON FILES
+# Edit the JSON files in data/depth_charts/ to update rosters
 # ============================================================
 
-DEPTH_CHART = {
-    "GK": [
-        {"name": "Stefan Frei", "designation": "SEN", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/ohm7sxqzwo5lzzjfwza9.png","international": False, "supplemental": False, "off_roster": False, "unavailable": False, "on_loan": False},
-        {"name": "Andrew Thomas", "designation": "SEN", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/v7ywfzz0yxjx5xfnqyhs.png", "international": False, "supplemental": False, "off_roster": False, "unavailable": False, "on_loan": False},
-        {"name": "Jacob Castro", "designation": "HG", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/player-placeholder.png", "international": False, "supplemental": True, "off_roster": False, "unavailable": False, "on_loan": False},
-    ],
+DEPTH_CHARTS_DIR = Path(__file__).parent / "data" / "depth_charts"
+
+def load_depth_chart(team: str, year: int) -> dict:
+    """Load depth chart from JSON file.
+
+    Args:
+        team: 'sounders' or 'defiance'
+        year: 2024, 2025, or 2026
+
+    Returns:
+        Dictionary with depth chart data
+    """
+    filename = f"{team}_{year}.json"
+    filepath = DEPTH_CHARTS_DIR / filename
+
+    if filepath.exists():
+        with open(filepath, 'r') as f:
+            data = json.load(f)
+            return data.get("depth_chart", {})
+    return {}
+
+# Load all depth charts from JSON files
+DEPTH_CHART = load_depth_chart("sounders", 2025)
+DEPTH_CHART_2024 = load_depth_chart("sounders", 2024)
+DEPTH_CHART_2026 = load_depth_chart("sounders", 2026)
+DEFIANCE_DEPTH_CHART = load_depth_chart("defiance", 2025)
+DEFIANCE_DEPTH_CHART_2024 = load_depth_chart("defiance", 2024)
+DEFIANCE_DEPTH_CHART_2026 = load_depth_chart("defiance", 2026)
+
+# Position order for 4-2-3-1 (First Team)
+POSITION_ORDER = ["GK", "RB", "CB", "CB2", "LB", "CDM", "CDM2", "RAM", "CAM", "LAM", "ST"]
+
+# Position coordinates on 120x80 pitch (x=width 0-80, y=length 0-120)
+# Vertical pitch: y=0 is defending goal, y=120 is attacking goal
+POSITION_COORDS = {
+    "GK": (40, 10),
+    "LB": (10, 30),
+    "CB": (28, 30),
+    "CB2": (52, 30),
+    "RB": (70, 30),
+    "CDM": (28, 55),
+    "CDM2": (52, 55),
+    "LAM": (15, 80),
+    "CAM": (40, 80),
+    "RAM": (65, 80),
+    "ST": (40, 105),
+}
+
+# Defiance position order (3-4-3)
+DEFIANCE_POSITION_ORDER = ["GK", "LCB", "CB", "RCB", "LM", "LCM", "RCM", "RM", "LW", "ST", "RW"]
+
+# 3-4-3 coordinates
+DEFIANCE_POSITION_COORDS = {
+    "GK": (40, 10),
+    "LCB": (20, 30),
+    "CB": (40, 30),
+    "RCB": (60, 30),
+    "LM": (10, 60),
+    "LCM": (30, 55),
+    "RCM": (50, 55),
+    "RM": (70, 60),
+    "LW": (15, 95),
+    "ST": (40, 100),
+    "RW": (65, 95),
+}
+
+# ============================================================
+# LOAD DATA
+# ============================================================
+
+DATA_DIR = Path(__file__).parent / "data"
+
+CURRENT_SEASON = 2025  # Update this when a new season starts
+
+# NOTE: The old hardcoded depth chart data has been moved to JSON files.
+# To edit rosters, positions, or designations, edit the files in:
+#   data/depth_charts/sounders_2024.json
+#   data/depth_charts/sounders_2025.json
+#   data/depth_charts/sounders_2026.json
+#   data/depth_charts/defiance_2024.json
+#   data/depth_charts/defiance_2025.json
+#   data/depth_charts/defiance_2026.json
+
+_SKIP_OLD_DATA = """
     "RB": [
         {"name": "Alex Roldan", "designation": "TAM", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/nqxcyv4xbn6dmzocubu6.png","international": False, "supplemental": False, "off_roster": False, "unavailable": False, "on_loan": False},
         {"name": "Kalani Kossa-Rienzi", "designation": "SUP", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/player-placeholder.png","international": False, "supplemental": True, "off_roster": False, "unavailable": False, "on_loan": False},
@@ -414,14 +544,7 @@ DEFIANCE_DEPTH_CHART_2026 = {
         {"name": "Hassan", "designation": "DEF", "academy": True},
     ],
 }
-
-# ============================================================
-# LOAD DATA
-# ============================================================
-
-DATA_DIR = Path(__file__).parent / "data"
-
-CURRENT_SEASON = 2025  # Update this when a new season starts
+"""  # End of skipped old hardcoded data
 
 def load_season_data(year: int):
     """Load data files for a specific season."""
@@ -562,6 +685,51 @@ def get_player_data(name, player_lookup=None):
     return None
 
 
+def get_player_photo_with_fallback(name, season, depth_chart_entry=None):
+    """Get player photo URL with fallback to previous seasons if placeholder or missing.
+
+    For 2026 players who were also on the team in 2025, use their 2025 photo
+    if the 2026 photo is missing or a placeholder.
+    """
+    PLACEHOLDER_URL = "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/player-placeholder.png"
+
+    # Try to get photo from current season's depth chart entry
+    photo_url = None
+    if depth_chart_entry:
+        photo_url = depth_chart_entry.get("photo")
+
+    # Also check player lookup for image_url
+    player_lookup = SEASON_LOOKUPS.get(season, {}).get("player_lookup", {})
+    player_data = get_player_data(name, player_lookup)
+    if player_data and player_data.get("image_url"):
+        photo_url = player_data.get("image_url")
+
+    # If photo is missing or placeholder, try previous seasons
+    if not photo_url or photo_url == PLACEHOLDER_URL:
+        # Try 2025 first, then 2024
+        fallback_seasons = [2025, 2024] if season == 2026 else ([2024] if season == 2025 else [])
+
+        for fallback_year in fallback_seasons:
+            # Check depth chart for fallback season
+            fallback_depth_chart = DEPTH_CHART if fallback_year == 2025 else DEPTH_CHART_2024
+            for pos, players in fallback_depth_chart.items():
+                for p in players:
+                    if p.get("name") == name:
+                        fallback_photo = p.get("photo")
+                        if fallback_photo and fallback_photo != PLACEHOLDER_URL:
+                            return fallback_photo
+
+            # Also check player lookup for fallback season
+            fallback_lookup = SEASON_LOOKUPS.get(fallback_year, {}).get("player_lookup", {})
+            fallback_player = get_player_data(name, fallback_lookup)
+            if fallback_player and fallback_player.get("image_url"):
+                fallback_img = fallback_player.get("image_url")
+                if fallback_img and fallback_img != PLACEHOLDER_URL:
+                    return fallback_img
+
+    return photo_url
+
+
 def get_game_stats(player_id, match_id, events_data=None):
     """Calculate stats for a specific game from events data."""
     if events_data is None:
@@ -587,9 +755,9 @@ def get_game_stats(player_id, match_id, events_data=None):
     # Calculate pass-related stats
     successful_passes = [p for p in passes if p.get("outcome_type_display_name") == "Successful"]
     key_passes = [p for p in passes if p.get("is_keypass", False)]
-    progressive_passes = [p for p in passes if p.get("is_progressive_pass", False)]
-    final_third_passes = [p for p in passes if p.get("is_final_third_pass", False)]
-    deep_passes = [p for p in passes if p.get("is_deep_pass", False)]
+    progressive_passes = [p for p in passes if p.get("is_progressive_pass", False) and p.get("outcome_type_display_name") == "Successful"]
+    final_third_passes = [p for p in passes if p.get("is_final_third_pass", False) and p.get("outcome_type_display_name") == "Successful"]
+    deep_passes = [p for p in passes if p.get("is_deep_pass", False) and p.get("outcome_type_display_name") == "Successful"]
 
     # Calculate carry-related stats
     final_third_carries = [c for c in carries if c.get("is_final_third_carry", False)]
@@ -603,12 +771,12 @@ def get_game_stats(player_id, match_id, events_data=None):
     # Shots on target: SavedShot and Goal where not blocked
     shots_on_target = [s for s in shots if not s.get("is_blocked", False) and s.get("type_display_name") in ["SavedShot", "Goal"]]
 
-    # Calculate PV sums
-    pv_passing = sum(e.get("pv_added", 0) or 0 for e in passes)
-    pv_carrying = sum(e.get("pv_added", 0) or 0 for e in carries)
-    pv_receiving = sum(e.get("pv_added", 0) or 0 for e in receptions)
-    pv_defending = sum(e.get("pv_added", 0) or 0 for e in (tackles + interceptions + clearances + recoveries))
-    pv_shooting = sum(e.get("pv_added", 0) or 0 for e in shots)
+    # Calculate PV+ sums (gplus is the field name in events data)
+    pv_passing = sum(e.get("gplus", 0) or 0 for e in passes)
+    pv_carrying = sum(e.get("gplus", 0) or 0 for e in carries)
+    pv_receiving = sum(e.get("gplus", 0) or 0 for e in receptions)
+    pv_defending = sum(e.get("gplus", 0) or 0 for e in (tackles + interceptions + clearances + recoveries))
+    pv_shooting = sum(e.get("gplus", 0) or 0 for e in shots)
 
     return {
         "gp": 1,
@@ -621,7 +789,7 @@ def get_game_stats(player_id, match_id, events_data=None):
         "progressive_passes": len(progressive_passes),
         "final_third_passes": len(final_third_passes),
         "deep_passes": len(deep_passes),
-        "xg_assisted": sum(p.get("xg_assisted", 0) or 0 for p in passes),
+        "xg_assisted": sum(1 for p in passes if p.get("is_shotassist", False)) * 0.15,
         "carries": len(carries),
         "final_third_carries": len(final_third_carries),
         "deep_carries": len(deep_carries),
@@ -647,11 +815,20 @@ def get_game_stats(player_id, match_id, events_data=None):
     }
 
 
-def calculate_roster_counts(depth_chart):
-    """Calculate roster slot counts from depth chart data."""
+def calculate_roster_counts(depth_chart, year: int = 2025, team: str = "first_team"):
+    """Calculate roster slot counts from depth chart data.
+
+    Args:
+        depth_chart: The depth chart dictionary
+        year: The season year for roster rules (2024, 2025, 2026)
+        team: 'first_team' or 'defiance'
+    """
     all_players = []
     for pos, players in depth_chart.items():
         all_players.extend(players)
+
+    # Get year-specific roster rules
+    rules = get_roster_rules(year, team)
 
     # Count various roster categories
     total_on_roster = sum(1 for p in all_players if not p.get("off_roster", False))
@@ -666,21 +843,23 @@ def calculate_roster_counts(depth_chart):
     unavailable_count = sum(1 for p in all_players if p.get("unavailable", False))
     sei_count = sum(1 for p in all_players if p.get("designation") == "SEI")
 
+    int_max = rules["international_max"]
+
     return {
         "total_on_roster": total_on_roster,
-        "total_max": 31,
+        "total_max": rules["total_max"],
         "senior_roster": senior_roster,
-        "senior_max": 20,
+        "senior_max": rules["senior_max"],
         "supplemental_roster": supplemental_roster,
-        "supplemental_max": 11,
+        "supplemental_max": rules["supplemental_max"],
         "dp_spots": dp_spots,
-        "dp_max": 3,
+        "dp_max": rules["dp_max"],
         "u22_count": u22_count,
-        "u22_max": 3,
+        "u22_max": rules["u22_max"],
         "tam_count": tam_count,
         "international_count": international_count,
-        "international_max": 4,
-        "open_international": max(0, 4 - international_count),
+        "international_max": int_max,
+        "open_international": max(0, int_max - international_count) if int_max else None,
         "on_loan_count": on_loan_count,
         "off_roster": off_roster,
         "unavailable_count": unavailable_count,
@@ -762,6 +941,23 @@ def format_percentile(percentile):
         return ""
     p = int(percentile)
     return f"({p}%)"
+
+
+def format_decimal(value, decimals=2):
+    """Format a decimal number, removing trailing zeroes after decimal point.
+
+    E.g., 1.00 -> "1", 1.50 -> "1.5", 1.23 -> "1.23"
+    """
+    if value is None:
+        return "0"
+    if not isinstance(value, (int, float)):
+        return str(value)
+    # Format with specified decimal places, then strip trailing zeroes and decimal point
+    formatted = f"{value:.{decimals}f}"
+    # Remove trailing zeroes after decimal point
+    if '.' in formatted:
+        formatted = formatted.rstrip('0').rstrip('.')
+    return formatted
 
 
 # Calculate percentiles on startup for all seasons
@@ -1317,8 +1513,16 @@ app_ui = ui.page_fluid(
                 margin-bottom: 10px;
             }}
             .action-map-buttons .shiny-input-radiogroup {{
+                display: flex;
+                flex-wrap: wrap;
+                gap: 8px;
                 row-gap: 12px;
                 margin-top: 10px;
+                justify-content: flex-start;
+            }}
+            .action-map-buttons .shiny-input-radiogroup label {{
+                white-space: nowrap;
+                flex-shrink: 0;
             }}
             .shiny-input-container {{
                 margin-bottom: 0;
@@ -1728,11 +1932,11 @@ app_ui = ui.page_fluid(
                         None,
                         choices={
                             "Overview": "Overview",
-                            "Pass": "Pass",
-                            "Carry": "Carry",
-                            "Reception": "Reception",
-                            "Shot": "Shots",
-                            "Defensive": "Defensive",
+                            "Pass": "Passing",
+                            "Reception": "Receiving",
+                            "Shot": "Shooting",
+                            "Carry": "Carrying",
+                            "Defensive": "Defending",
                         },
                         selected="Overview",
                         inline=True
@@ -1859,10 +2063,26 @@ def server(input, output, session):
     @reactive.effect
     @reactive.event(input.season_select)
     def _reset_on_season_change():
-        """Reset player selection when season changes."""
+        """Reset all selections and state when season changes."""
         selected_player.set(None)
         selected_game.set(None)
         stat_visualization.set(None)
+        location_toggle.set("start")
+        heatmap_mode.set("action")
+        per_90_mode.set(False)
+        roster_filter.set(None)
+
+    @reactive.effect
+    @reactive.event(input.team_select)
+    def _reset_on_team_change():
+        """Reset all selections and state when team changes."""
+        selected_player.set(None)
+        selected_game.set(None)
+        stat_visualization.set(None)
+        location_toggle.set("start")
+        heatmap_mode.set("action")
+        per_90_mode.set(False)
+        roster_filter.set(None)
 
     @output
     @render.ui
@@ -2024,10 +2244,14 @@ def server(input, output, session):
     @output
     @render.ui
     def per_90_toggle():
-        """Render Per 90 toggle button - hidden for Overview stats."""
+        """Render Per 90 toggle button - hidden for Overview stats or when filtered to specific game."""
         # Hide Per 90 toggle for Overview (overall stats)
         heatmap_type = input.heatmap_type()
         if heatmap_type == "Overview":
+            return ui.div()  # Return empty div to hide
+
+        # Hide Per 90 toggle when filtered to a specific game
+        if selected_game.get() is not None:
             return ui.div()  # Return empty div to hide
 
         is_per_90 = per_90_mode.get()
@@ -2050,12 +2274,12 @@ def server(input, output, session):
 
     @reactive.effect
     @reactive.event(input.reset_heatmap)
-    async def _():
+    def _reset_heatmap_handler():
         stat_visualization.set(None)
         location_toggle.set("start")
         show_trajectories.set(False)
-        # Reset heatmap to default selection
-        await session.send_input_message("heatmap_type", {"value": "Pass"})
+        heatmap_mode.set("action")
+        per_90_mode.set(False)
 
     # Handle legend filter clicks
     @reactive.effect
@@ -2301,11 +2525,13 @@ def server(input, output, session):
     def roster_summary():
         """Display clickable roster legend below the pitch."""
         team = input.team_select()
+        season = int(input.season_select())  # Direct reference for reactive dependency
+        depth_chart, _, _ = get_current_team_data()
 
         if team == "defiance":
             # Show Defiance legend with academy/loanee categories
             all_players = []
-            for pos, players in DEFIANCE_DEPTH_CHART.items():
+            for pos, players in depth_chart.items():
                 all_players.extend(players)
 
             academy_players = [p for p in all_players if p.get("academy", False)]
@@ -2351,8 +2577,8 @@ def server(input, output, session):
             '''
             return ui.HTML(summary_html)
 
-        # First Team legend
-        counts = calculate_roster_counts(DEPTH_CHART)
+        # First Team legend - use year-specific depth chart and rules
+        counts = calculate_roster_counts(depth_chart, year=season, team="first_team")
         current_filter = roster_filter.get()
 
         # Calculate total on roster excluding on-loan players
@@ -2365,7 +2591,7 @@ def server(input, output, session):
             ("supplemental", "Supplemental", counts['supplemental_roster'], counts['supplemental_max']),
             ("international", "International", counts['international_count'], counts['international_max']),
             ("dp", "DP", counts['dp_spots'], counts['dp_max']),
-            ("u22", "U22", counts.get('u22_count', 0), 3),
+            ("u22", "U22", counts.get('u22_count', 0), counts.get('u22_max')),
             ("tam", "TAM", counts.get('tam_count', 0), None),
             ("unavailable", "Unavailable", counts.get('unavailable_count', 0), None),
             ("sei", "SEI", counts.get('sei_count', 0), None),
@@ -2567,11 +2793,11 @@ def server(input, output, session):
             name = player.get("name", "Unknown")
             val = get_stat_value(player)
 
-            # Format value
+            # Format value - remove trailing zeroes
             if is_decimal or is_per_90:
-                formatted_val = f"{val:.2f}"
+                formatted_val = format_decimal(val, 2)
             else:
-                formatted_val = str(int(val)) if val == int(val) else f"{val:.1f}"
+                formatted_val = format_decimal(val, 1)
 
             # Highlight if this is the selected player
             highlighted = "highlighted" if name == current_player else ""
@@ -2619,13 +2845,16 @@ def server(input, output, session):
         if is_per_90:
             stat_header += " /90"
 
-        # Per 90 toggle button
-        per_90_active = "active" if is_per_90 else ""
-        per_90_btn = f'''
-            <button class="ranking-stat-btn {per_90_active}" id="ranking-per90-btn" style="margin-left: auto;">
-                Per 90
-            </button>
-        '''
+        # Per 90 toggle button - hide when filtered to specific game
+        if game_filter:
+            per_90_btn = ''
+        else:
+            per_90_active = "active" if is_per_90 else ""
+            per_90_btn = f'''
+                <button class="ranking-stat-btn {per_90_active}" id="ranking-per90-btn" style="margin-left: auto;">
+                    Per 90
+                </button>
+            '''
 
         # Game filter indicator
         game_indicator = ""
@@ -2859,10 +3088,9 @@ def server(input, output, session):
             is_per_90 = per_90_mode.get()
             radar_img = create_radar_chart(player, is_per_90, accent_color=accent_color)
 
-            # Use image_url from database if available, fallback to depth chart photo
-            photo_url = player.get('image_url')
-            if not photo_url and player_entry:
-                photo_url = player_entry.get("photo")
+            # Use image_url from database if available, fallback to depth chart photo with season fallback
+            season = get_current_season()
+            photo_url = get_player_photo_with_fallback(name, season, player_entry)
 
             # Get position from primary_general_position
             position = player.get('primary_general_position', player.get('position', 'N/A'))
@@ -2899,7 +3127,9 @@ def server(input, output, session):
                 ),
             )
         else:
-            photo_url = player_entry.get("photo") if player_entry else None
+            # Use photo with fallback even when player data not found
+            season = get_current_season()
+            photo_url = get_player_photo_with_fallback(name, season, player_entry)
             badges_html = ""
             for badge in roster_badges:
                 badges_html += f'<span class="designation-badge" style="margin-right: 5px; margin-bottom: 5px;">{badge}</span>'
@@ -2923,39 +3153,42 @@ def server(input, output, session):
 
 
     # Define stat tooltips and which stats are clickable for heatmap visualization
+    # Only specific stats have tooltips per user request
     STAT_INFO = {
-        "matches": {"tooltip": "Total games played this season", "clickable": False},
-        "goals": {"tooltip": "Goals scored. Click to see shot locations that resulted in goals", "clickable": True, "viz_type": "goals"},
-        "assists": {"tooltip": "Intentional passes leading directly to goals. Click to see assist passes", "clickable": True, "viz_type": "assists"},
-        "shots": {"tooltip": "Total shot attempts. Click to see all shot locations", "clickable": True, "viz_type": "all_shots"},
-        "shots_on_target": {"tooltip": "Shots on target. Click to see SOT locations", "clickable": True, "viz_type": "shots_on_target"},
-        "passes": {"tooltip": "Successful passes completed", "clickable": False},
-        "total_passes": {"tooltip": "All pass attempts. Click to see all pass locations", "clickable": True, "viz_type": "all_passes"},
+        "matches": {"tooltip": "", "clickable": False},
+        "goals": {"tooltip": "", "clickable": True, "viz_type": "goals"},
+        "assists": {"tooltip": "Intentional passes leading directly to goals", "clickable": True, "viz_type": "assists"},
+        "shots": {"tooltip": "", "clickable": True, "viz_type": "all_shots"},
+        "shots_on_target": {"tooltip": "Shots on target", "clickable": True, "viz_type": "shots_on_target"},
+        "sot_pct": {"tooltip": "Shots on target percentage - SOT divided by total shots", "clickable": False},
+        "conversion": {"tooltip": "Goal conversion rate - goals divided by total shots", "clickable": False},
+        "passes": {"tooltip": "", "clickable": False},
+        "total_passes": {"tooltip": "", "clickable": True, "viz_type": "all_passes"},
         "pass_pct": {"tooltip": "Pass completion percentage - successful passes divided by total pass attempts", "clickable": False},
-        "key_passes": {"tooltip": "Passes leading to a shot attempt. Click to see key pass trajectories", "clickable": True, "viz_type": "key_passes"},
-        "progressive_passes": {"tooltip": "Passes that move the ball significantly closer to goal. Click to see locations", "clickable": True, "viz_type": "progressive_passes"},
-        "final_third_passes": {"tooltip": "Passes into or within the final third. Click to see locations", "clickable": True, "viz_type": "final_third_passes"},
-        "deep_passes": {"tooltip": "Passes into the deep area near the box. Click to see locations", "clickable": True, "viz_type": "deep_passes"},
-        "xg_assisted": {"tooltip": "Expected goals from chances created by this player's passes", "clickable": False},
-        "defensive_actions": {"tooltip": "Combined tackles, interceptions, clearances, and recoveries. Click to see all defensive action locations", "clickable": True, "viz_type": "all_defensive"},
-        "tackles": {"tooltip": "Successful tackle attempts. Click to see tackle locations", "clickable": True, "viz_type": "tackles"},
-        "interceptions": {"tooltip": "Passes intercepted. Click to see interception locations", "clickable": True, "viz_type": "interceptions"},
-        "clearances": {"tooltip": "Defensive clearances. Click to see clearance locations", "clickable": True, "viz_type": "clearances"},
-        "ball_recoveries": {"tooltip": "Loose balls recovered. Click to see recovery locations", "clickable": True, "viz_type": "recoveries"},
-        "carries": {"tooltip": "Ball carries (dribbles). Click to see carry paths", "clickable": True, "viz_type": "all_carries"},
-        "final_third_carries": {"tooltip": "Carries into or within the final third. Click to see locations", "clickable": True, "viz_type": "final_third_carries"},
-        "deep_carries": {"tooltip": "Carries into the deep area near the box. Click to see locations", "clickable": True, "viz_type": "deep_carries"},
-        "progressive_carries": {"tooltip": "Carries that move the ball significantly closer to goal. Click to see locations", "clickable": True, "viz_type": "progressive_carries"},
-        "receptions": {"tooltip": "All ball receptions. Click to see reception locations", "clickable": True, "viz_type": "all_receptions"},
-        "final_third_receptions": {"tooltip": "Receptions in the final third. Click to see locations", "clickable": True, "viz_type": "final_third_receptions"},
-        "deep_receptions": {"tooltip": "Deep receptions near the box. Click to see locations", "clickable": True, "viz_type": "deep_receptions"},
+        "key_passes": {"tooltip": "", "clickable": True, "viz_type": "key_passes"},
+        "progressive_passes": {"tooltip": "Passes that move the ball significantly closer to goal", "clickable": True, "viz_type": "progressive_passes"},
+        "final_third_passes": {"tooltip": "", "clickable": True, "viz_type": "final_third_passes"},
+        "deep_passes": {"tooltip": "Passes into the deep area near the box", "clickable": True, "viz_type": "deep_passes"},
+        "xg_assisted": {"tooltip": "", "clickable": False},
+        "defensive_actions": {"tooltip": "", "clickable": True, "viz_type": "all_defensive"},
+        "tackles": {"tooltip": "", "clickable": True, "viz_type": "tackles"},
+        "interceptions": {"tooltip": "", "clickable": True, "viz_type": "interceptions"},
+        "clearances": {"tooltip": "", "clickable": True, "viz_type": "clearances"},
+        "ball_recoveries": {"tooltip": "", "clickable": True, "viz_type": "recoveries"},
+        "carries": {"tooltip": "", "clickable": True, "viz_type": "all_carries"},
+        "final_third_carries": {"tooltip": "", "clickable": True, "viz_type": "final_third_carries"},
+        "deep_carries": {"tooltip": "Carries into the deep area near the box", "clickable": True, "viz_type": "deep_carries"},
+        "progressive_carries": {"tooltip": "Carries that move the ball significantly closer to goal", "clickable": True, "viz_type": "progressive_carries"},
+        "receptions": {"tooltip": "", "clickable": True, "viz_type": "all_receptions"},
+        "final_third_receptions": {"tooltip": "", "clickable": True, "viz_type": "final_third_receptions"},
+        "deep_receptions": {"tooltip": "Deep receptions near the box", "clickable": True, "viz_type": "deep_receptions"},
         "pv_total": {"tooltip": "Total Possession Value Added - overall contribution to scoring chances", "clickable": False},
         "pv_passing": {"tooltip": "Possession Value from passing - how much passes increased scoring probability", "clickable": False},
         "pv_receiving": {"tooltip": "Possession Value from receiving - value added by receiving passes in good positions", "clickable": False},
         "pv_carrying": {"tooltip": "Possession Value from carrying - value added by dribbling/carrying the ball", "clickable": False},
         "pv_shooting": {"tooltip": "Possession Value from shooting - expected goals from shot quality", "clickable": False},
         "pv_defending": {"tooltip": "Possession Value from defending - value added/lost from defensive actions", "clickable": False},
-        "xg": {"tooltip": "Expected Goals - the probability of shots becoming goals based on shot quality", "clickable": False},
+        "xg": {"tooltip": "", "clickable": False},
     }
 
     @output
@@ -2998,16 +3231,17 @@ def server(input, output, session):
         def format_stat_value(raw_value, stat_key):
             """Format stat value, applying per 90 if enabled."""
             if stat_key and stat_key.startswith("pv_"):
-                # PV stats - format as decimal
+                # PV stats - format as decimal, removing trailing zeroes
                 val = get_per_90_value(raw_value) if is_per_90 else raw_value
-                return f"{val:.2f}" if isinstance(val, (int, float)) else str(val)
+                return format_decimal(val, 2) if isinstance(val, (int, float)) else str(val)
             elif is_per_90 and isinstance(raw_value, (int, float)):
                 val = get_per_90_value(raw_value)
-                return f"{val:.2f}" if isinstance(val, float) else str(val)
+                return format_decimal(val, 2) if isinstance(val, float) else str(val)
             return str(raw_value) if raw_value is not None else "0"
 
         # Stats not available at event level (only season totals)
-        event_level_unavailable = ['xg_assisted', 'pv_passing', 'pv_carrying', 'pv_receiving', 'pv_defending', 'pv_shooting']
+        # Note: PV stats and xg_assisted are calculated from events in get_game_stats, so they ARE available
+        event_level_unavailable = []
 
         def get_stat_value(key, default=0):
             """Get stat value, returning 'N/A' for unavailable per-game stats."""
@@ -3065,10 +3299,10 @@ def server(input, output, session):
             stats = [
                 ("Total Shots", shots, "shots"),
                 ("SOT", sot, "shots_on_target"),
-                ("SOT %", f"{sot_pct}%", None),
+                ("SOT %", f"{sot_pct}%", "sot_pct"),
                 ("Goals", goals, "goals"),
                 ("xG", xg, "total_xg"),
-                ("Conversion", f"{conversion}%", None),
+                ("Conversion", f"{conversion}%", "conversion"),
                 ("PV Shooting", get_stat_value('pv_shooting'), "pv_shooting"),
             ]
         elif heatmap_type == "Defensive":
@@ -3089,14 +3323,26 @@ def server(input, output, session):
             games_started = player.get("gs", 0) or 0
             mins = player.get("mins", 0) or 0
             total_actions = (player.get("passes", 0) or 0) + (player.get("carries", 0) or 0) + (player.get("defensive_actions", 0) or 0)
-            stats = [
-                ("Mins", mins, "mins"),
-                ("Games Played", games_played, "gp"),
-                ("Games Started", games_started, "gs"),
-                ("Goals", player.get("goals", 0), "goals"),
-                ("Int. Assists", player.get("assists", 0), "assists"),
-                ("Total Actions", total_actions, "total_actions"),
-            ]
+            # Don't show Mins stat when filtering to a specific game (since it always shows 90)
+            if game_filter:
+                stats = [
+                    ("Games Played", games_played, "gp"),
+                    ("Games Started", games_started, "gs"),
+                    ("Goals", player.get("goals", 0), "goals"),
+                    ("Int. Assists", player.get("assists", 0), "assists"),
+                    ("Total Actions", total_actions, "total_actions"),
+                    ("PV+ Total", get_stat_value('pv_total'), "pv_total"),
+                ]
+            else:
+                stats = [
+                    ("Mins", mins, "mins"),
+                    ("Games Played", games_played, "gp"),
+                    ("Games Started", games_started, "gs"),
+                    ("Goals", player.get("goals", 0), "goals"),
+                    ("Int. Assists", player.get("assists", 0), "assists"),
+                    ("Total Actions", total_actions, "total_actions"),
+                    ("PV+ Total", get_stat_value('pv_total'), "pv_total"),
+                ]
             # Disable per 90 for overall stats
             is_per_90 = False
 
@@ -3115,18 +3361,20 @@ def server(input, output, session):
 
             # Apply per 90 formatting if enabled and value is numeric
             if is_per_90 and stat_key and isinstance(raw_value, (int, float)):
-                value = f"{get_per_90_value(raw_value):.2f}"
+                value = format_decimal(get_per_90_value(raw_value), 2)
             elif stat_key in decimal_stats and isinstance(raw_value, (int, float)):
-                # Always format decimal stats with 2 decimal places
-                value = f"{raw_value:.2f}"
+                # Format decimal stats, removing trailing zeroes
+                value = format_decimal(raw_value, 2)
             elif isinstance(raw_value, (int, float)) and not isinstance(raw_value, bool):
-                value = str(int(raw_value)) if raw_value == int(raw_value) else f"{raw_value:.2f}"
+                value = format_decimal(raw_value, 2)
             else:
                 value = str(raw_value) if raw_value is not None else "0"
 
             # Get percentile if available (use per90 percentiles when in per 90 mode)
+            # Don't show percentile if the raw value is 0
             percentile_html = ""
-            if stat_key:
+            raw_is_zero = isinstance(raw_value, (int, float)) and raw_value == 0
+            if stat_key and not raw_is_zero:
                 if is_per_90:
                     pct = player.get(f"{stat_key}_per90_percentile")
                 else:

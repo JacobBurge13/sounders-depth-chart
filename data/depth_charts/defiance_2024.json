@@ -1,0 +1,47 @@
+{
+  "team": "Defiance",
+  "year": 2024,
+  "formation": "343",
+  "positions": ["GK", "LCB", "CB", "RCB", "LM", "LCM", "RCM", "RM", "LW", "ST", "RW"],
+  "depth_chart": {
+    "GK": [
+      {"name": "M.Shour", "designation": "DEF", "academy": true}
+    ],
+    "LCB": [
+      {"name": "A.Lopez", "designation": "DEF", "academy": true}
+    ],
+    "CB": [
+      {"name": "Kaito", "designation": "DEF", "loanee": true},
+      {"name": "Alvarez", "designation": "DEF"}
+    ],
+    "RCB": [
+      {"name": "Katsaros", "designation": "DEF", "academy": true}
+    ],
+    "LM": [
+      {"name": "Diaw", "designation": "DEF"}
+    ],
+    "LCM": [
+      {"name": "Dodzi", "designation": "DEF"},
+      {"name": "Robles", "designation": "DEF", "academy": true}
+    ],
+    "RCM": [
+      {"name": "Kingston", "designation": "DEF"},
+      {"name": "Baer", "designation": "DEF"}
+    ],
+    "RM": [
+      {"name": "Kang", "designation": "DEF"},
+      {"name": "Gaffney", "designation": "DEF", "academy": true}
+    ],
+    "LW": [
+      {"name": "Gomez", "designation": "DEF", "academy": true},
+      {"name": "Khoury", "designation": "DEF"}
+    ],
+    "ST": [
+      {"name": "Tsukanome", "designation": "DEF"}
+    ],
+    "RW": [
+      {"name": "Pedder", "designation": "DEF"},
+      {"name": "Hassan", "designation": "DEF", "academy": true}
+    ]
+  }
+}
