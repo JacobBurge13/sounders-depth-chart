@@ -1,0 +1,58 @@
+{
+  "team": "Sounders",
+  "year": 2024,
+  "formation": "4231",
+  "positions": ["GK", "RB", "CB", "CB2", "LB", "CDM", "CDM2", "RAM", "CAM", "LAM", "ST"],
+  "depth_chart": {
+    "GK": [
+      {"name": "Stefan Frei", "designation": "", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/ohm7sxqzwo5lzzjfwza9.png", "international": false, "supplemental": false, "off_roster": false, "unavailable": false, "on_loan": false},
+      {"name": "Andrew Thomas", "designation": "", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/v7ywfzz0yxjx5xfnqyhs.png", "international": false, "supplemental": false, "off_roster": false, "unavailable": false, "on_loan": false},
+      {"name": "Jacob Castro", "designation": "", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/player-placeholder.png", "international": false, "supplemental": false, "off_roster": false, "unavailable": false, "on_loan": false}
+    ],
+    "RB": [
+      {"name": "Alex Roldan", "designation": "", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/nqxcyv4xbn6dmzocubu6.png", "international": false, "supplemental": false, "off_roster": false, "unavailable": false, "on_loan": false},
+      {"name": "Cody Baker", "designation": "", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/bkrb1hgxfti2vdvpu3df.png", "international": false, "supplemental": true, "off_roster": false, "unavailable": false, "on_loan": false},
+      {"name": "Dylan Teves", "designation": "", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/elfanjrepvgx3ltndorf.png", "international": false, "supplemental": true, "off_roster": false, "unavailable": false, "on_loan": false}
+    ],
+    "CB": [
+      {"name": "Yeimar Gómez", "designation": "", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/nv1n00o9nqj3b8xp3d7x.png", "international": false, "supplemental": false, "off_roster": false, "unavailable": false, "on_loan": false},
+      {"name": "Xavier Arreaga", "designation": "", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/player-placeholder.png", "international": true, "supplemental": false, "off_roster": true, "unavailable": false, "on_loan": false},
+      {"name": "Stuart Hawkins", "designation": "", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/player-placeholder.png", "international": true, "supplemental": false, "off_roster": false, "unavailable": false, "on_loan": false}
+    ],
+    "CB2": [
+      {"name": "Jackson Ragen", "designation": "", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/lzqqe2bqomxhz3khsjdx.png", "international": false, "supplemental": false, "off_roster": false, "unavailable": false, "on_loan": false},
+      {"name": "Jon Bell", "designation": "", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/aeqgzncldvjzgtxlm8xz.png", "international": false, "supplemental": false, "off_roster": false, "unavailable": false, "on_loan": false},
+      {"name": "Nathan", "designation": "", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/aeqgzncldvjzgtxlm8xz.png", "international": false, "supplemental": false, "off_roster": false, "unavailable": false, "on_loan": false}
+    ],
+    "LB": [
+      {"name": "Nouhou Tolo", "designation": "", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/jyjpg9vb3kzmixbcryjq.png", "international": false, "supplemental": false, "off_roster": false, "unavailable": false, "on_loan": false},
+      {"name": "Reed Baker-Whiting", "designation": "", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/qvdqsyv9bv2gu3hjvnjq.png", "international": false, "supplemental": true, "off_roster": false, "unavailable": false, "on_loan": false}
+    ],
+    "CDM": [
+      {"name": "Obed Vargas", "designation": "", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/taa9y0fcr9qr0kmjkfob.png", "international": false, "supplemental": true, "off_roster": false, "unavailable": false, "on_loan": false},
+      {"name": "Josh Atencio", "designation": "", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/yt812jw1mftrtr8ho5fy.png", "international": false, "supplemental": true, "off_roster": false, "unavailable": false, "on_loan": false},
+      {"name": "Sota Kitahara", "designation": "", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/knpbicnjm1777fbjntff.png", "international": false, "supplemental": true, "off_roster": false, "unavailable": false, "on_loan": false}
+    ],
+    "CDM2": [
+      {"name": "Cristian Roldan", "designation": "", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/m5qdkkjckwl4nmkdznmr.png", "international": false, "supplemental": false, "off_roster": false, "unavailable": false, "on_loan": false},
+      {"name": "João Paulo", "designation": "", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/jxmb4clwkxqxyxjlwpkk.png", "international": false, "supplemental": false, "off_roster": false, "unavailable": false, "on_loan": false}
+    ],
+    "RAM": [
+      {"name": "Paul Rothrock", "designation": "", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/ckwworz7vczyepsrl6ow.png", "international": false, "supplemental": true, "off_roster": false, "unavailable": false, "on_loan": false},
+      {"name": "Georgi Minoungou", "designation": "", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/cxjjcp9cqdtgdbgellna.png", "international": false, "supplemental": false, "off_roster": false, "unavailable": false, "on_loan": false}
+    ],
+    "CAM": [
+      {"name": "Albert Rusnák", "designation": "", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/dvkfxhjyurvbh3xbfwqe.png", "international": false, "supplemental": false, "off_roster": false, "unavailable": false, "on_loan": false},
+      {"name": "Danny Leyva", "designation": "", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/i8llg4w0fqrshzqz0zhk.png", "international": false, "supplemental": false, "off_roster": false, "unavailable": false, "on_loan": false}
+    ],
+    "LAM": [
+      {"name": "Pedro de la Vega", "designation": "", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/xwfkzwzxpq8jxdhqhjqq.png", "international": true, "supplemental": false, "off_roster": false, "unavailable": false, "on_loan": false},
+      {"name": "Léo Chú", "designation": "", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/dcx1wnvmpfhxsckseazq.png", "international": true, "supplemental": false, "off_roster": false, "unavailable": false, "on_loan": false}
+    ],
+    "ST": [
+      {"name": "Raúl Ruidíaz", "designation": "", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/hzqoaydtujhs8zj1pm3r.png", "international": false, "supplemental": false, "off_roster": false, "unavailable": false, "on_loan": false},
+      {"name": "Jordan Morris", "designation": "", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/gdhhtbzmgmxrgq1nqjql.png", "international": false, "supplemental": false, "off_roster": false, "unavailable": false, "on_loan": false},
+      {"name": "Danny Musovski", "designation": "", "photo": "https://images.mlssoccer.com/image/private/t_thumb_squared/f_png/mls/qfhqr8jq1ycqz5xyhzqj.png", "international": false, "supplemental": false, "off_roster": false, "unavailable": false, "on_loan": false}
+    ]
+  }
+}
